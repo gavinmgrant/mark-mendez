@@ -9,9 +9,6 @@ export default defineCliConfig({
     projectId: projectId,
     dataset: dataset,
   },
-  studioHost:
-    host && host !== "main"
-      ? `${host}-turbo-start-sanity`
-      : "turbo-start-sanity",
+  studioHost: host && host !== "main" ? `${host}-mark-mendez` : "mark-mendez",
   autoUpdates: false,
 });
