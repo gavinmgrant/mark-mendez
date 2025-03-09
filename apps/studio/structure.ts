@@ -9,6 +9,7 @@ import {
   PanelBottomIcon,
   PanelTopDashedIcon,
   Settings2,
+  SpeechIcon,
   User,
 } from "lucide-react";
 import type {
@@ -108,6 +109,12 @@ export const structure = (
         type: "faq",
         title: "FAQs",
         icon: MessageCircleQuestion,
+      }),
+      createList({
+        S,
+        type: "testimonial",
+        title: "Testimonials",
+        icon: SpeechIcon,
       }),
       createList({ S, type: "author", title: "Authors", icon: User }),
       S.divider(),

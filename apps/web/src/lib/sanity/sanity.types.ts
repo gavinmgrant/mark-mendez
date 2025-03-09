@@ -68,6 +68,23 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type VideosYoutube = {
+  _type: "videosYoutube";
+  title?: string;
+};
+
+export type Testimonials = {
+  _type: "testimonials";
+  title?: string;
+  testimonials?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "testimonial";
+  }>;
+};
+
 export type SubscribeNewsletter = {
   _type: "subscribeNewsletter";
   title?: string;
@@ -107,6 +124,11 @@ export type SubscribeNewsletter = {
     _type: "block";
     _key: string;
   }>;
+};
+
+export type Properties = {
+  _type: "properties";
+  title?: string;
 };
 
 export type ImageLinkCards = {
@@ -337,7 +359,15 @@ export type Hero = {
   >;
 };
 
+export type ContactForm = {
+  _type: "contactForm";
+  title?: string;
+};
+
 export type PageBuilder = Array<
+  | ({
+      _key: string;
+    } & ContactForm)
   | ({
       _key: string;
     } & Hero)
@@ -355,7 +385,16 @@ export type PageBuilder = Array<
     } & ImageLinkCards)
   | ({
       _key: string;
+    } & Properties)
+  | ({
+      _key: string;
     } & SubscribeNewsletter)
+  | ({
+      _key: string;
+    } & Testimonials)
+  | ({
+      _key: string;
+    } & VideosYoutube)
 >;
 
 export type Button = {
@@ -545,6 +584,16 @@ export type HomePage = {
   };
   ogTitle?: string;
   ogDescription?: string;
+};
+
+export type Testimonial = {
+  _id: string;
+  _type: "testimonial";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  richText?: RichText;
 };
 
 export type Author = {
@@ -914,12 +963,16 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | VideosYoutube
+  | Testimonials
   | SubscribeNewsletter
+  | Properties
   | ImageLinkCards
   | FaqAccordion
   | FeatureCardsIcon
   | Cta
   | Hero
+  | ContactForm
   | PageBuilder
   | Button
   | RichText
@@ -928,6 +981,7 @@ export type AllSanitySchemaTypes =
   | Settings
   | BlogIndex
   | HomePage
+  | Testimonial
   | Author
   | Faq
   | Page
@@ -967,6 +1021,11 @@ export type QueryHomePageDataResult = {
   description: string | null;
   slug: string | null;
   pageBuilder: Array<
+    | {
+        _key: string;
+        _type: "contactForm";
+        title?: string;
+      }
     | {
         _key: string;
         _type: "cta";
@@ -1287,6 +1346,11 @@ export type QueryHomePageDataResult = {
       }
     | {
         _key: string;
+        _type: "properties";
+        title?: string;
+      }
+    | {
+        _key: string;
         _type: "subscribeNewsletter";
         title?: string;
         subTitle: Array<{
@@ -1343,6 +1407,23 @@ export type QueryHomePageDataResult = {
           _type: "block";
           _key: string;
         }> | null;
+      }
+    | {
+        _key: string;
+        _type: "testimonials";
+        title?: string;
+        testimonials?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "testimonial";
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "videosYoutube";
+        title?: string;
       }
   > | null;
   seoTitle?: string;
@@ -1386,6 +1467,11 @@ export type QuerySlugPageDataResult = {
   pageBuilder: Array<
     | {
         _key: string;
+        _type: "contactForm";
+        title?: string;
+      }
+    | {
+        _key: string;
         _type: "cta";
         eyebrow?: string;
         title?: string;
@@ -1704,6 +1790,11 @@ export type QuerySlugPageDataResult = {
       }
     | {
         _key: string;
+        _type: "properties";
+        title?: string;
+      }
+    | {
+        _key: string;
         _type: "subscribeNewsletter";
         title?: string;
         subTitle: Array<{
@@ -1760,6 +1851,23 @@ export type QuerySlugPageDataResult = {
           _type: "block";
           _key: string;
         }> | null;
+      }
+    | {
+        _key: string;
+        _type: "testimonials";
+        title?: string;
+        testimonials?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "testimonial";
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "videosYoutube";
+        title?: string;
       }
   > | null;
   seoTitle?: string;
@@ -1804,6 +1912,11 @@ export type QueryBlogIndexPageDataResult = {
   pageBuilder: Array<
     | {
         _key: string;
+        _type: "contactForm";
+        title?: string;
+      }
+    | {
+        _key: string;
         _type: "cta";
         eyebrow?: string;
         title?: string;
@@ -2122,6 +2235,11 @@ export type QueryBlogIndexPageDataResult = {
       }
     | {
         _key: string;
+        _type: "properties";
+        title?: string;
+      }
+    | {
+        _key: string;
         _type: "subscribeNewsletter";
         title?: string;
         subTitle: Array<{
@@ -2178,6 +2296,23 @@ export type QueryBlogIndexPageDataResult = {
           _type: "block";
           _key: string;
         }> | null;
+      }
+    | {
+        _key: string;
+        _type: "testimonials";
+        title?: string;
+        testimonials?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "testimonial";
+        }>;
+      }
+    | {
+        _key: string;
+        _type: "videosYoutube";
+        title?: string;
       }
   > | null;
   seoTitle?: string;
@@ -2478,7 +2613,7 @@ export type QueryGenericPageOGDataResult =
     }
   | null;
 // Variable: queryFooterData
-// Query: *[_type == "footer" && _id == "footer"][0]{    _id,    subtitle,    columns[]{      _key,      title,      links[]{        _key,        name,        "openInNewTab": url.openInNewTab,        "href": select(          url.type == "internal" => url.internal->slug.current,          url.type == "external" => url.external,          url.href        ),      }    },    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",    "siteTitle": *[_type == "settings"][0].siteTitle,    "socialLinks": *[_type == "settings"][0].socialLinks,  }
+// Query: *[_type == "footer" && _id == "footer"][0]{    _id,    subtitle,    columns[]{      _key,      title,      links[]{        _key,        name,        "openInNewTab": url.openInNewTab,        "href": select(          url.type == "internal" => url.internal->slug.current,          url.type == "external" => url.external,          url.href        ),      }    },    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",    "siteTitle": *[_type == "settings"][0].siteTitle,    "agentLicenseNumber": *[_type == "settings"][0].agentLicenseNumber,    "socialLinks": *[_type == "settings"][0].socialLinks,  }
 export type QueryFooterDataResult = {
   _id: string;
   subtitle: string | null;
@@ -2504,7 +2639,7 @@ export type QueryFooterDataResult = {
   } | null;
 } | null;
 // Variable: queryNavbarData
-// Query: *[_type == "navbar" && _id == "navbar"][0]{    _id,    columns[]{      _key,      _type == "navbarColumn" => {        "type": "column",        title,        links[]{          _key,          name,          icon,          description,          "openInNewTab": url.openInNewTab,          "href": select(            url.type == "internal" => url.internal->slug.current,            url.type == "external" => url.external,            url.href          )        }      },      _type == "navbarLink" => {        "type": "link",        name,        description,        "openInNewTab": url.openInNewTab,        "href": select(          url.type == "internal" => url.internal->slug.current,          url.type == "external" => url.external,          url.href        )      }    },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",    "siteTitle": *[_type == "settings"][0].siteTitle,    "agentLicensNumber": *[_type == "settings"][0].agentLicenseNumber,  }
+// Query: *[_type == "navbar" && _id == "navbar"][0]{    _id,    columns[]{      _key,      _type == "navbarColumn" => {        "type": "column",        title,        links[]{          _key,          name,          icon,          description,          "openInNewTab": url.openInNewTab,          "href": select(            url.type == "internal" => url.internal->slug.current,            url.type == "external" => url.external,            url.href          )        }      },      _type == "navbarLink" => {        "type": "link",        name,        description,        "openInNewTab": url.openInNewTab,        "href": select(          url.type == "internal" => url.internal->slug.current,          url.type == "external" => url.external,          url.href        )      }    },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",    "siteTitle": *[_type == "settings"][0].siteTitle,  }
 export type QueryNavbarDataResult = {
   _id: string;
   columns: Array<
@@ -2568,7 +2703,7 @@ declare module "@sanity/client" {
     '\n  *[_type == "page" && _id == $id][0]{\n    \n  _id,\n  _type,\n  "title": select(\n    defined(ogTitle) => ogTitle,\n    defined(seoTitle) => seoTitle,\n    title\n  ),\n  "description": select(\n    defined(ogDescription) => ogDescription,\n    defined(seoDescription) => seoDescription,\n    description\n  ),\n  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",\n  "dominantColor": image.asset->metadata.palette.dominant.background,\n  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max", \n  "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",\n  "date": coalesce(date, _createdAt)\n\n  }\n': QuerySlugPageOGDataResult;
     '\n  *[_type == "blog" && _id == $id][0]{\n    \n  _id,\n  _type,\n  "title": select(\n    defined(ogTitle) => ogTitle,\n    defined(seoTitle) => seoTitle,\n    title\n  ),\n  "description": select(\n    defined(ogDescription) => ogDescription,\n    defined(seoDescription) => seoDescription,\n    description\n  ),\n  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",\n  "dominantColor": image.asset->metadata.palette.dominant.background,\n  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max", \n  "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",\n  "date": coalesce(date, _createdAt)\n\n  }\n': QueryBlogPageOGDataResult;
     '\n  *[ defined(slug.current) && _id == $id][0]{\n    \n  _id,\n  _type,\n  "title": select(\n    defined(ogTitle) => ogTitle,\n    defined(seoTitle) => seoTitle,\n    title\n  ),\n  "description": select(\n    defined(ogDescription) => ogDescription,\n    defined(seoDescription) => seoDescription,\n    description\n  ),\n  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",\n  "dominantColor": image.asset->metadata.palette.dominant.background,\n  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max", \n  "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",\n  "date": coalesce(date, _createdAt)\n\n  }\n': QueryGenericPageOGDataResult;
-    '\n  *[_type == "footer" && _id == "footer"][0]{\n    _id,\n    subtitle,\n    columns[]{\n      _key,\n      title,\n      links[]{\n        _key,\n        name,\n        "openInNewTab": url.openInNewTab,\n        "href": select(\n          url.type == "internal" => url.internal->slug.current,\n          url.type == "external" => url.external,\n          url.href\n        ),\n      }\n    },\n    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",\n    "siteTitle": *[_type == "settings"][0].siteTitle,\n    "socialLinks": *[_type == "settings"][0].socialLinks,\n  }\n': QueryFooterDataResult;
+    '\n  *[_type == "footer" && _id == "footer"][0]{\n    _id,\n    subtitle,\n    columns[]{\n      _key,\n      title,\n      links[]{\n        _key,\n        name,\n        "openInNewTab": url.openInNewTab,\n        "href": select(\n          url.type == "internal" => url.internal->slug.current,\n          url.type == "external" => url.external,\n          url.href\n        ),\n      }\n    },\n    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",\n    "siteTitle": *[_type == "settings"][0].siteTitle,\n    "agentLicenseNumber": *[_type == "settings"][0].agentLicenseNumber,\n    "socialLinks": *[_type == "settings"][0].socialLinks,\n  }\n': QueryFooterDataResult;
     '\n  *[_type == "navbar" && _id == "navbar"][0]{\n    _id,\n    columns[]{\n      _key,\n      _type == "navbarColumn" => {\n        "type": "column",\n        title,\n        links[]{\n          _key,\n          name,\n          icon,\n          description,\n          "openInNewTab": url.openInNewTab,\n          "href": select(\n            url.type == "internal" => url.internal->slug.current,\n            url.type == "external" => url.external,\n            url.href\n          )\n        }\n      },\n      _type == "navbarLink" => {\n        "type": "link",\n        name,\n        description,\n        "openInNewTab": url.openInNewTab,\n        "href": select(\n          url.type == "internal" => url.internal->slug.current,\n          url.type == "external" => url.external,\n          url.href\n        )\n      }\n    },\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",\n    "siteTitle": *[_type == "settings"][0].siteTitle,\n  }\n': QueryNavbarDataResult;
     '{\n  "slugPages": *[_type == "page" && defined(slug.current)]{\n    "slug": slug.current,\n    "lastModified": _updatedAt\n  },\n  "blogPages": *[_type == "blog" && defined(slug.current)]{\n    "slug": slug.current,\n    "lastModified": _updatedAt\n  }\n}': QuerySitemapDataResult;
   }

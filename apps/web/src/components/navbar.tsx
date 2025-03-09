@@ -3,6 +3,7 @@ import Link from "next/link";
 import { sanityFetch } from "@/lib/sanity/live";
 import { queryNavbarData } from "@/lib/sanity/query";
 import type { QueryNavbarDataResult } from "@/lib/sanity/sanity.types";
+import { capitalizeAllLetters } from "@/utils";
 
 import { Logo } from "./logo";
 import { NavbarClient, NavbarSkeletonResponsive } from "./navbar-client";
@@ -16,14 +17,14 @@ export function Navbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
   const { logo, siteTitle } = navbarData ?? {};
 
   return (
-    <section className="py-3 md:border-b">
+    <section className="py-3 md:border-b sticky top-0 z-50 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <nav className="grid grid-cols-[auto_1fr] items-center gap-4">
           {logo ? (
             <Logo src={logo} alt={siteTitle} priority />
           ) : (
             <Link href="/" className="text-lg font-semibold">
-              {siteTitle}
+              {capitalizeAllLetters(siteTitle)}
             </Link>
           )}
           <NavbarClient navbarData={navbarData} />

@@ -7,12 +7,16 @@ import { dataset, projectId, studioUrl } from "@/lib/sanity/api";
 import type { QueryHomePageDataResult } from "@/lib/sanity/sanity.types";
 import type { PagebuilderType } from "@/types";
 
+import { ContactForm } from "./sections/contact-form";
 import { CTABlock } from "./sections/cta";
 import { FaqAccordion } from "./sections/faq-accordion";
 import { FeatureCardsWithIcon } from "./sections/feature-cards-with-icon";
 import { HeroBlock } from "./sections/hero";
 import { ImageLinkCards } from "./sections/image-link-cards";
+import { Properties } from "./sections/properties";
 import { SubscribeNewsletter } from "./sections/subscribe-newsletter";
+import { Testimonials } from "./sections/testimonials";
+import { VideosYoutube } from "./sections/videos-youtube";
 
 type PageBlock = NonNullable<
   NonNullable<QueryHomePageDataResult>["pageBuilder"]
@@ -31,12 +35,16 @@ type PageData = {
 };
 
 const BLOCK_COMPONENTS = {
+  contactForm: ContactForm,
   cta: CTABlock,
   faqAccordion: FaqAccordion,
   hero: HeroBlock,
   featureCardsIcon: FeatureCardsWithIcon,
   subscribeNewsletter: SubscribeNewsletter,
   imageLinkCards: ImageLinkCards,
+  properties: Properties,
+  testimonials: Testimonials,
+  videosYoutube: VideosYoutube,
 } as const;
 
 type BlockType = keyof typeof BLOCK_COMPONENTS;
@@ -59,7 +67,7 @@ export function PageBuilder({
 
   return (
     <main
-      className="flex flex-col gap-16 my-16 max-w-7xl mx-auto"
+      className="flex flex-col gap-16 my-4 lg:my-16 max-w-7xl mx-auto"
       data-sanity={createDataAttribute({
         id: id,
         baseUrl: studioUrl,

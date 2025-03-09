@@ -13,6 +13,8 @@ import {
   YoutubeIcon,
 } from "./social-icons";
 
+import { capitalizeAllLetters } from "@/utils";
+
 interface SocialLinksProps {
   data: NonNullable<QueryFooterDataResult>["socialLinks"];
 }
@@ -153,7 +155,7 @@ function Footer({ data }: FooterProps) {
                   </span>
                 ) : (
                   <Link href="/" className="text-lg font-semibold">
-                    {siteTitle}
+                    {capitalizeAllLetters(siteTitle)}
                   </Link>
                 )}
                 {subtitle && (
@@ -199,15 +201,25 @@ function Footer({ data }: FooterProps) {
           <div className="mt-20 border-t pt-8">
             <div className="flex flex-col justify-between gap-4  text-center text-sm font-normal text-muted-foreground lg:flex-row lg:items-center lg:text-left mx-auto max-w-7xl px-4 md:px-6">
               <p>
-                © {year} {siteTitle}. All rights reserved. {agentLicenseNumber}
+                © {year} {siteTitle}. All rights reserved.
               </p>
               <ul className="flex justify-center gap-4 lg:justify-start">
                 <li className="hover:text-primary">
+                  <a
+                    href="https://www.compass.com/agents/mark-mendez/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Compass
+                  </a>
+                </li>
+                <li>{agentLicenseNumber}</li>
+                {/* <li className="hover:text-primary">
                   <Link href="/terms">Terms and Conditions</Link>
                 </li>
                 <li className="hover:text-primary">
                   <Link href="/privacy">Privacy Policy</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

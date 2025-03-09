@@ -42,7 +42,9 @@ export function FeatureCardsWithIcon({
         <div className="flex w-full flex-col items-center">
           <div className="flex flex-col items-center space-y-4 text-center sm:space-y-6 md:text-center">
             <Badge variant="secondary">{eyebrow}</Badge>
-            <h2 className="text-3xl font-semibold md:text-5xl">{title}</h2>
+            <h2 className="text-3xl font-semibold md:text-4xl lg:text-5xl">
+              {title}
+            </h2>
             <RichText
               richText={richText}
               className="text-base md:text-lg text-balance max-w-3xl"

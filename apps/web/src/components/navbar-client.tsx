@@ -31,6 +31,7 @@ import { useEffect, useState } from "react";
 
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import type { QueryNavbarDataResult } from "@/lib/sanity/sanity.types";
+import { capitalizeAllLetters } from "@/utils";
 
 import { Logo } from "./logo";
 import { ModeToggle } from "./mode-toggle";
@@ -128,7 +129,13 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
       <SheetContent className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
-            <Logo src={logo} alt={siteTitle} priority />
+            {logo ? (
+              <Logo src={logo} alt={siteTitle} priority />
+            ) : (
+              <Link href="/" className="text-lg font-semibold">
+                {capitalizeAllLetters(siteTitle)}
+              </Link>
+            )}
           </SheetTitle>
         </SheetHeader>
 
