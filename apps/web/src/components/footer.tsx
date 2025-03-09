@@ -139,7 +139,6 @@ function Footer({ data }: FooterProps) {
     agentLicenseNumber,
   } = data;
   const year = new Date().getFullYear();
-  console.log('==>', data);
 
   return (
     <section className="mt-20 pb-8">
