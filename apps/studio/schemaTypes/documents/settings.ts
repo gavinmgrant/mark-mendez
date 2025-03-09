@@ -15,9 +15,9 @@ const socialLinks = defineField({
       type: "string",
     }),
     defineField({
-      name: "facebook",
-      title: "Facebook URL",
-      description: "Full URL to your Facebook profile/page",
+      name: "tiktok",
+      title: "TikTok URL",
+      description: "Full URL to your TikTok profile",
       type: "string",
     }),
     defineField({
@@ -70,6 +70,13 @@ export const settings = defineType({
       title: "Site Description",
       description: "A brief description of your website for SEO purposes",
       validation: (rule) => rule.required().min(50).max(160),
+    }),
+    defineField({
+      name: "agentLicenseNumber",
+      type: "string",
+      title: "Agent License Number",
+      description: "License number of the agent, example DRE# 01234567",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "logo",

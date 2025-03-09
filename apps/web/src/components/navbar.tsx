@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { sanityFetch } from "@/lib/sanity/live";
 import { queryNavbarData } from "@/lib/sanity/query";
 import type { QueryNavbarDataResult } from "@/lib/sanity/sanity.types";
@@ -17,8 +19,13 @@ export function Navbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
     <section className="py-3 md:border-b">
       <div className="container mx-auto px-4 md:px-6">
         <nav className="grid grid-cols-[auto_1fr] items-center gap-4">
-          <Logo src={logo} alt={siteTitle} priority />
-
+          {logo ? (
+            <Logo src={logo} alt={siteTitle} priority />
+          ) : (
+            <Link href="/" className="text-lg font-semibold">
+              {siteTitle}
+            </Link>
+          )}
           <NavbarClient navbarData={navbarData} />
         </nav>
       </div>

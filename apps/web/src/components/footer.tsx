@@ -6,7 +6,7 @@ import type { QueryFooterDataResult } from "@/lib/sanity/sanity.types";
 
 import { Logo } from "./logo";
 import {
-  FacebookIcon,
+  TikTokIcon,
   InstagramIcon,
   LinkedinIcon,
   XIcon,
@@ -37,7 +37,7 @@ export async function FooterServer() {
 function SocialLinks({ data }: SocialLinksProps) {
   if (!data) return null;
 
-  const { facebook, twitter, instagram, youtube, linkedin } = data;
+  const { tiktok, twitter, instagram, youtube, linkedin } = data;
 
   const socialLinks = [
     {
@@ -45,7 +45,7 @@ function SocialLinks({ data }: SocialLinksProps) {
       Icon: InstagramIcon,
       label: "Follow us on Instagram",
     },
-    { url: facebook, Icon: FacebookIcon, label: "Follow us on Facebook" },
+    { url: tiktok, Icon: TikTokIcon, label: "Follow us on TikTok" },
     { url: twitter, Icon: XIcon, label: "Follow us on Twitter" },
     { url: linkedin, Icon: LinkedinIcon, label: "Follow us on LinkedIn" },
     {
@@ -130,8 +130,16 @@ export function FooterSkeleton() {
 }
 
 function Footer({ data }: FooterProps) {
-  const { subtitle, columns, socialLinks, logo, siteTitle } = data;
+  const {
+    subtitle,
+    columns,
+    socialLinks,
+    logo,
+    siteTitle,
+    agentLicenseNumber,
+  } = data;
   const year = new Date().getFullYear();
+  console.log('==>', data);
 
   return (
     <section className="mt-20 pb-8">
@@ -140,9 +148,15 @@ function Footer({ data }: FooterProps) {
           <div className="flex flex-col items-center justify-between gap-10 text-center lg:flex-row lg:text-left mx-auto max-w-7xl px-4 md:px-6">
             <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 md:gap-8 lg:items-start">
               <div>
-                <span className="flex items-center justify-center gap-4 lg:justify-start">
-                  <Logo src={logo} alt={siteTitle} priority />
-                </span>
+                {logo ? (
+                  <span className="flex items-center justify-center gap-4 lg:justify-start">
+                    <Logo src={logo} alt={siteTitle} priority />
+                  </span>
+                ) : (
+                  <Link href="/" className="text-lg font-semibold">
+                    {siteTitle}
+                  </Link>
+                )}
                 {subtitle && (
                   <p className="mt-6 text-sm text-muted-foreground dark:text-zinc-400">
                     {subtitle}
@@ -186,7 +200,7 @@ function Footer({ data }: FooterProps) {
           <div className="mt-20 border-t pt-8">
             <div className="flex flex-col justify-between gap-4  text-center text-sm font-normal text-muted-foreground lg:flex-row lg:items-center lg:text-left mx-auto max-w-7xl px-4 md:px-6">
               <p>
-                © {year} {siteTitle}. All rights reserved.
+                © {year} {siteTitle}. All rights reserved. {agentLicenseNumber}
               </p>
               <ul className="flex justify-center gap-4 lg:justify-start">
                 <li className="hover:text-primary">

@@ -279,6 +279,7 @@ export const queryFooterData = defineQuery(/* groq */ `
     },
     "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",
     "siteTitle": *[_type == "settings"][0].siteTitle,
+    "agentLicenseNumber": *[_type == "settings"][0].agentLicenseNumber,
     "socialLinks": *[_type == "settings"][0].socialLinks,
   }
 `);

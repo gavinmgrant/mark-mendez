@@ -46,22 +46,20 @@ export function getMetaData(data: MetaDataInput): Metadata {
   });
 
   return {
-    title: `${meta.title} | Roboto Studio Demo`,
+    title: `${meta.title} | Mark H Mendez Group`,
     description: meta.description,
     metadataBase: new URL(baseUrl),
-    creator: "Roboto Studio Demo",
-    authors: [{ name: "Roboto" }],
+    creator: "Mark Mendez",
+    authors: [{ name: "Mark Mendez" }],
     icons: {
       icon: `${baseUrl}/favicon.ico`,
     },
     keywords: [
-      "roboto",
-      "studio",
-      "demo",
-      "sanity",
-      "next",
-      "react",
-      "template",
+      "los angeles architecture",
+      "los angeles architecture broker",
+      "los angeles luxury real estate agent",
+      "los angeles real estate agent",
+      "mark mendez",
     ],
     twitter: {
       card: "summary_large_image",
@@ -75,7 +73,7 @@ export function getMetaData(data: MetaDataInput): Metadata {
     },
     openGraph: {
       type: "website",
-      countryName: "UK",
+      countryName: "US",
       description: meta.description,
       title: meta.title,
       images: [

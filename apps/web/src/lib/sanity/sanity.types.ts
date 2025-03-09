@@ -464,6 +464,7 @@ export type Settings = {
   label?: string;
   siteTitle?: string;
   siteDescription?: string;
+  agentLicenseNumber?: string;
   logo?: {
     asset?: {
       _ref: string;
@@ -478,7 +479,7 @@ export type Settings = {
   contactEmail?: string;
   socialLinks?: {
     linkedin?: string;
-    facebook?: string;
+    tiktok?: string;
     twitter?: string;
     instagram?: string;
     youtube?: string;
@@ -2493,16 +2494,17 @@ export type QueryFooterDataResult = {
   }> | null;
   logo: string | null;
   siteTitle: string | null;
+  agentLicenseNumber: string | null;
   socialLinks: {
     linkedin?: string;
-    facebook?: string;
+    tiktok?: string;
     twitter?: string;
     instagram?: string;
     youtube?: string;
   } | null;
 } | null;
 // Variable: queryNavbarData
-// Query: *[_type == "navbar" && _id == "navbar"][0]{    _id,    columns[]{      _key,      _type == "navbarColumn" => {        "type": "column",        title,        links[]{          _key,          name,          icon,          description,          "openInNewTab": url.openInNewTab,          "href": select(            url.type == "internal" => url.internal->slug.current,            url.type == "external" => url.external,            url.href          )        }      },      _type == "navbarLink" => {        "type": "link",        name,        description,        "openInNewTab": url.openInNewTab,        "href": select(          url.type == "internal" => url.internal->slug.current,          url.type == "external" => url.external,          url.href        )      }    },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",    "siteTitle": *[_type == "settings"][0].siteTitle,  }
+// Query: *[_type == "navbar" && _id == "navbar"][0]{    _id,    columns[]{      _key,      _type == "navbarColumn" => {        "type": "column",        title,        links[]{          _key,          name,          icon,          description,          "openInNewTab": url.openInNewTab,          "href": select(            url.type == "internal" => url.internal->slug.current,            url.type == "external" => url.external,            url.href          )        }      },      _type == "navbarLink" => {        "type": "link",        name,        description,        "openInNewTab": url.openInNewTab,        "href": select(          url.type == "internal" => url.internal->slug.current,          url.type == "external" => url.external,          url.href        )      }    },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",    "siteTitle": *[_type == "settings"][0].siteTitle,    "agentLicensNumber": *[_type == "settings"][0].agentLicenseNumber,  }
 export type QueryNavbarDataResult = {
   _id: string;
   columns: Array<

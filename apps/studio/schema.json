@@ -3152,6 +3152,13 @@
         },
         "optional": true
       },
+      "agentLicenseNumber": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "logo": {
         "type": "objectAttribute",
         "value": {
@@ -3233,7 +3240,7 @@
               },
               "optional": true
             },
-            "facebook": {
+            "tiktok": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"
