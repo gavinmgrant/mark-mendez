@@ -5,7 +5,7 @@ const resendApiKey = process.env.RESEND_API_KEY;
 const resend = new Resend(resendApiKey);
 const domain = "markhmendez.com";
 
-export async function POST(req, res) {
+export async function POST(req: any, res: any) {
   if (req.body.honeypot) {
     return res.status(400).json({ message: "Spam detected." });
   }

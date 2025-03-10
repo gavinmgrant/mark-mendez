@@ -31,7 +31,9 @@ export function ContactForm({ title }: ContactFormProps) {
   const [status, setStatus] = useState<Status>({ success: null, message: "" });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
+  type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
+  const handleChange = (e: ChangeEvent) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -39,7 +41,16 @@ export function ContactForm({ title }: ContactFormProps) {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  interface SubmitEvent {
+    preventDefault: () => void;
+  }
+
+  interface FetchResponse {
+    ok: boolean;
+    json: () => Promise<{ message?: string }>;
+  }
+
+  const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setStatus({ success: null, message: "" });
@@ -61,7 +72,7 @@ export function ContactForm({ title }: ContactFormProps) {
     }
 
     try {
-      const response = await fetch("/api/send", {
+      const response: FetchResponse = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
