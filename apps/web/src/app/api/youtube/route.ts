@@ -18,7 +18,7 @@ export async function GET() {
     const data = parser.parse(text);
 
     // Reduce to the most recent 10 videos
-    data.feed.entry = data.feed.entry.slice(0, 10);
+    data.feed.entry = data.feed.entry.slice(0, 12);
 
     const videos = data.feed.entry.map((video: any) => {
       return {

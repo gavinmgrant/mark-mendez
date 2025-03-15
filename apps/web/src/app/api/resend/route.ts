@@ -1,5 +1,6 @@
-import { EmailTemplateContact } from "../../../components/email-template-contact";
 import { Resend } from "resend";
+
+import { EmailTemplateContact } from "../../../components/email-template-contact";
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const resend = new Resend(resendApiKey);
@@ -17,9 +18,9 @@ export async function POST(req: any, res: any) {
   const { firstName, lastName, email, message } = req.body;
 
   const { data, error } = await resend.emails.send({
-    from: "Mark Mendez <mark.mendez@compass.com>",
-    to: ["mark.mendez@compass.com"],
-    subject: "New Lead from Website",
+    from: "Mark Mendez <mark@markhmendez.com>",
+    to: ["mark@markhmendez.com"],
+    subject: "New Lead from Mark H Mendez Group Website",
     react: EmailTemplateContact({ firstName, lastName, email, message }),
   });
 

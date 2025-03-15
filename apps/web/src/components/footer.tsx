@@ -1,8 +1,8 @@
 import Link from "next/link";
 
+import type { QueryFooterDataResult } from "@/lib/sanity/sanity.types";
 import { sanityFetch } from "@/lib/sanity/live";
 import { queryFooterData } from "@/lib/sanity/query";
-import type { QueryFooterDataResult } from "@/lib/sanity/sanity.types";
 
 import { Logo } from "./logo";
 import {
@@ -154,7 +154,10 @@ function Footer({ data }: FooterProps) {
                     <Logo src={logo} alt={siteTitle} priority />
                   </span>
                 ) : (
-                  <Link href="/" className="text-lg font-semibold">
+                  <Link
+                    href="/"
+                    className="text-md lg:text-lg font-semibold tracking-widest"
+                  >
                     {capitalizeAllLetters(siteTitle)}
                   </Link>
                 )}

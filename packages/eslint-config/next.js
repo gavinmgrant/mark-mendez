@@ -42,6 +42,7 @@ export const nextJsConfig = [
     rules: {
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs["core-web-vitals"].rules,
+      ...pluginNext.configs["no-explicit-any"].rules,
     },
   },
   {

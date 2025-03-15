@@ -132,7 +132,10 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
             {logo ? (
               <Logo src={logo} alt={siteTitle} priority />
             ) : (
-              <Link href="/" className="text-lg font-semibold">
+              <Link
+                href="/"
+                className="text-md lg:text-lg font-semibold tracking-widest"
+              >
                 {capitalizeAllLetters(siteTitle)}
               </Link>
             )}
@@ -269,7 +272,7 @@ export function DesktopNavbar({
         <SanityButtons
           buttons={buttons ?? []}
           className="flex items-center gap-4"
-          buttonClassName="rounded-[10px]"
+          buttonClassName="rounded-md"
         />
       </div>
     </div>
@@ -321,7 +324,7 @@ function SkeletonDesktopNavbar() {
           {Array.from({ length: 2 }).map((_, index) => (
             <div
               key={`nav-button-skeleton-${index.toString()}`}
-              className="h-12 w-32 rounded-[10px] bg-muted animate-pulse"
+              className="h-12 w-32 rounded-md bg-muted animate-pulse"
             />
           ))}
         </div>

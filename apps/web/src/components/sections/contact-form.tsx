@@ -6,6 +6,8 @@ import { useState } from "react";
 
 import type { PagebuilderType } from "@/types";
 
+import { BookAMeetingButton } from "../book-a-meeting-button";
+
 type ContactFormProps = PagebuilderType<"contactForm">;
 
 interface FormData {
@@ -72,7 +74,7 @@ export function ContactForm({ title }: ContactFormProps) {
     }
 
     try {
-      const response: FetchResponse = await fetch("/api/send", {
+      const response: FetchResponse = await fetch("/api/resend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,14 +110,17 @@ export function ContactForm({ title }: ContactFormProps) {
   };
 
   const inputClasses =
-    "rounded-e-none border-e-0 focus-visible:ring-0 outline-none w-full dark:text-zinc-50 dark:placeholder:text-zinc-500 bg-background items-center border rounded-xl p-6 drop-shadow-lg w-full justify-between";
+    "focus-visible:ring-0 outline-none w-full dark:text-zinc-50 dark:placeholder:text-zinc-500 bg-background items-center border p-6 w-full justify-between";
 
   return (
-    <div className="relative w-full flex items-center justify-center">
+    <div className="relative w-full flex items-center justify-center container mx-auto px-4 md:px-6">
       <section
         id="contact-form"
-        className="relative container w-full spx-4 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-zinc-50 dark:bg-zinc-900 rounded-3xl overflow-hidden mx-4"
+        className="relative container w-full spx-4 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-zinc-50 dark:bg-zinc-900 rounded-3xl overflow-hidden"
       >
+        <div className="hidden md:block absolute top-6 right-6">
+          <BookAMeetingButton />
+        </div>
         <div className="container px-4 flex items-center justify-center w-full">
           <div className="flex flex-col items-center justify-center gap-4 w-full">
             <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-neutral-300 sm:text-3xl md:text-5xl text-balance">

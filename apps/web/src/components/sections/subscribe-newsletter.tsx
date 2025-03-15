@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@workspace/ui/components/button";
 import { ChevronRight, LoaderCircle } from "lucide-react";
 import Form from "next/form";
@@ -8,16 +9,6 @@ import { newsletterSubmission } from "@/action/newsletter-submission";
 import type { PagebuilderType } from "@/types";
 
 import { RichText } from "../richtext";
-
-// const InteractiveGridPattern = dynamic(
-//   () =>
-//     import("@workspace/ui/components/interactive-grid-pattern").then(
-//       (mod) => mod.InteractiveGridPattern,
-//     ),
-//   {
-//     ssr: false,
-//   },
-// );
 
 type SubscribeNewsletterProps = PagebuilderType<"subscribeNewsletter">;
 export default function SubscribeNewsletterButton() {
@@ -57,7 +48,10 @@ export function SubscribeNewsletter({
   helperText,
 }: SubscribeNewsletterProps) {
   return (
-    <section id="subscribe" className="px-4 py-8 sm:py-12 md:py-16">
+    <section
+      id="subscribe"
+      className="px-4 py-8 sm:py-12 md:py-16 container mx-auto md:px-6"
+    >
       <div className="relative container mx-auto px-4 md:px-8 py-8 sm:py-16 md:py-24 lg:py-32 bg-gray-50 dark:bg-zinc-900 rounded-3xl overflow-hidden">
         <div className="relative z-10 mx-auto text-center">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-neutral-300 sm:text-3xl md:text-5xl text-balance">
@@ -73,7 +67,7 @@ export function SubscribeNewsletter({
             className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-2"
             action={newsletterSubmission}
           >
-            <div className="flex bg-white dark:bg-zinc-200 items-center border rounded-xl p-2 drop-shadow-lg md:w-96 justify-between pl-4">
+            <div className="flex bg-white dark:bg-zinc-200 items-center border rounded-xl p-2 md:w-96 justify-between pl-4">
               <input
                 type="email"
                 name="email"

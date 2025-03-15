@@ -18,7 +18,7 @@ export function HeroBlock({
   return (
     <section id="hero" className="mt-4 md:my-16">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center flex-col lg:flex-row gap-6">
+        <div className="flex items-center flex-col lg:flex-row gap-6 lg:gap-20">
           <div className="grid h-full grid-rows-[auto_1fr_auto] gap-4 lg:gap-6 items-center justify-items-center text-center lg:items-start lg:justify-items-start lg:text-left">
             {badge && <Badge variant="secondary">{badge}</Badge>}
             <div className="grid gap-4">
@@ -41,7 +41,7 @@ export function HeroBlock({
           </div>
 
           {image && (
-            <div className="h-96 shrink-0 w-full lg:w-1/2">
+            <div className="h-full w-full lg:w-2/5 lg:shrink-0">
               <SanityImage
                 asset={image}
                 loading="eager"
@@ -49,7 +49,7 @@ export function HeroBlock({
                 height={800}
                 priority
                 quality={80}
-                className="max-h-96 w-full rounded-3xl object-cover"
+                className="max-h-124 lg:max-h-96 w-full rounded-3xl object-cover"
               />
             </div>
           )}

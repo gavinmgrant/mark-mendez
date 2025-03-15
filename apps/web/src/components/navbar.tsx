@@ -23,7 +23,10 @@ export function Navbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
           {logo ? (
             <Logo src={logo} alt={siteTitle} priority />
           ) : (
-            <Link href="/" className="text-lg font-semibold">
+            <Link
+              href="/"
+              className="text-md lg:text-lg font-semibold tracking-widest"
+            >
               {capitalizeAllLetters(siteTitle)}
             </Link>
           )}
