@@ -145,6 +145,18 @@ const subscribeNewsletterBlock = /* groq */ `
   }
 `;
 
+const testimonialsBlock = /* groq */ `
+  [_type == "testimonials"][0] => {
+    ...,
+    title,
+    testimonials[]->{
+      ...,
+      ${richTextFragment},
+      name
+    }
+  }
+`;
+
 const pageBuilderFragment = /* groq */ `
   pageBuilder[]{
     ...,
@@ -153,7 +165,8 @@ const pageBuilderFragment = /* groq */ `
     ${heroBlock},
     ${faqAccordionBlock},
     ${subscribeNewsletterBlock},
-    ${imageLinkCardsBlock}
+    ${imageLinkCardsBlock},
+    ${testimonialsBlock}
   }
 `;
 

@@ -311,22 +311,15 @@ function SkeletonDesktopNavbar() {
   return (
     <div className="hidden md:grid grid-cols-[1fr_auto] items-center gap-8 w-full">
       <div className="justify-center flex max-w-max flex-1 items-center gap-2">
-        {Array.from({ length: 2 }).map((_, index) => (
-          <div
-            key={`nav-item-skeleton-${index.toString()}`}
-            className="h-12 w-32 rounded bg-muted animate-pulse"
-          />
-        ))}
+        <div className="h-8 w-[100px] rounded-md bg-muted animate-pulse" />
+        <div className="h-8 w-[76px] rounded-md bg-muted animate-pulse" />
       </div>
 
       <div className="justify-self-end">
         <div className="flex items-center gap-4">
-          {Array.from({ length: 2 }).map((_, index) => (
-            <div
-              key={`nav-button-skeleton-${index.toString()}`}
-              className="h-12 w-32 rounded-md bg-muted animate-pulse"
-            />
-          ))}
+          <div className="h-12 w-12 rounded-md bg-muted animate-pulse" />
+          <div className="h-12 w-[100px] rounded-md bg-muted animate-pulse" />
+          <div className="h-12 w-[90px] rounded-md bg-muted animate-pulse" />
         </div>
       </div>
     </div>

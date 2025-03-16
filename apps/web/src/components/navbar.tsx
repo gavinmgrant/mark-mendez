@@ -25,7 +25,7 @@ export function Navbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
           ) : (
             <Link
               href="/"
-              className="text-md lg:text-lg font-semibold tracking-widest"
+              className="text-md lg:text-lg font-semibold tracking-widest w-[223px] lg:w-[264px]"
             >
               {capitalizeAllLetters(siteTitle)}
             </Link>
@@ -41,8 +41,8 @@ export function NavbarSkeleton() {
   return (
     <header className="h-[75px] py-4 md:border-b">
       <div className="container mx-auto px-4 md:px-6">
-        <nav className="grid grid-cols-[auto_1fr] items-center gap-4">
-          <div className="h-[40px] w-[170px] rounded animate-pulse bg-muted" />
+        <nav className="grid grid-cols-[auto_1fr] items-center gap-4 opacity-50">
+          <div className="h-[40px] w-[223px] rounded animate-pulse bg-muted" />
           <NavbarSkeletonResponsive />
         </nav>
       </div>

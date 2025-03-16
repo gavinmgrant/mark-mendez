@@ -26,4 +26,8 @@ export type SanityRichTextBlock = Extract<
   { _type: "block" }
 >;
 
+export type Testimonial = NonNullable<
+  NonNullable<PagebuilderType<"testimonials">>["testimonials"]
+>[number];
+
 export type Maybe<T> = T | null | undefined;
