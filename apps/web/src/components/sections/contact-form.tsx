@@ -2,6 +2,7 @@
 
 import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
+import { Textarea } from "@workspace/ui/components/textarea";
 import { useState } from "react";
 
 import type { PagebuilderType } from "@/types";
@@ -33,7 +34,7 @@ export function ContactForm({ title }: ContactFormProps) {
   const [status, setStatus] = useState<Status>({ success: null, message: "" });
   const [isLoading, setIsLoading] = useState(false);
 
-  type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+  type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
   const handleChange = (e: ChangeEvent) => {
     const { name, value } = e.target;
@@ -72,7 +73,8 @@ export function ContactForm({ title }: ContactFormProps) {
       setIsLoading(false);
       return;
     }
-
+    console.log("Form data==>", formData);
+    return;
     try {
       const response: FetchResponse = await fetch("/api/resend", {
         method: "POST",
@@ -162,13 +164,13 @@ export function ContactForm({ title }: ContactFormProps) {
                 value={formData.email}
                 onChange={handleChange}
               />
-              <Input
+              <Textarea
                 className={inputClasses}
-                type="text"
                 name="message"
                 placeholder="Message"
                 value={formData.message}
                 onChange={handleChange}
+                rows={5}
               />
               <div className="flex items-center justify-center w-full mt-6">
                 <Button type="submit" disabled={isLoading}>
