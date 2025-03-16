@@ -1,19 +1,42 @@
+import { useState } from "react";
 import type { PagebuilderType } from "@/types";
+import { LoaderCircle } from "lucide-react";
 
 type PropertiesProps = PagebuilderType<"properties">;
 
 export function Properties({ title }: PropertiesProps) {
+  const [loading, setLoading] = useState(true);
+
+  const handleLoaded = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  };
+
   return (
     <section id="properties">
       <div className="container mx-auto px-4 md:px-6 space-y-6 text-center">
         <h1 className="text-4xl lg:text-5xl font-semibold">{title}</h1>
-        <iframe
-          className="rounded-3xl"
-          src="https://www.compass.com/c/mark-mendez/architecture-for-sale?agent_id=5791082452f6eb36de5090f3"
-          width="100%"
-          height="1600px"
-          style={{ border: "none" }}
-        ></iframe>
+        <div className="relative">
+          {loading && (
+            <div className="absolute top-0 flex items-center justify-center h-72 w-full">
+              <LoaderCircle
+                className="animate-spin text-primary"
+                size={24}
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </div>
+          )}
+          <iframe
+            className="rounded-3xl"
+            src="https://www.compass.com/c/mark-mendez/architecture-for-sale?agent_id=5791082452f6eb36de5090f3"
+            width="100%"
+            height="1600px"
+            style={{ border: "none", opacity: loading ? 0 : 1 }}
+            onLoad={handleLoaded}
+          ></iframe>
+        </div>
       </div>
     </section>
   );
