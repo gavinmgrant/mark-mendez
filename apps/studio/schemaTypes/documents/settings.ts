@@ -38,6 +38,12 @@ const socialLinks = defineField({
       description: "Full URL to your YouTube channel",
       type: "string",
     }),
+    defineField({
+      name: "google",
+      title: "Google Businss URL",
+      description: "Full URL to your Google Business profile",
+      type: "string",
+    }),
   ],
 });
 

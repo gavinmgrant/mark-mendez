@@ -540,6 +540,7 @@ export type Settings = {
     twitter?: string;
     instagram?: string;
     youtube?: string;
+    google?: string;
   };
 };
 
@@ -2879,6 +2880,7 @@ export type QueryFooterDataResult = {
     twitter?: string;
     instagram?: string;
     youtube?: string;
+    google?: string;
   } | null;
 } | null;
 // Variable: queryNavbarData

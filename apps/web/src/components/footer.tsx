@@ -11,6 +11,7 @@ import {
   LinkedinIcon,
   XIcon,
   YoutubeIcon,
+  GoogleIcon,
 } from "./social-icons";
 
 import { capitalizeAllLetters } from "@/utils";
@@ -39,9 +40,14 @@ export async function FooterServer() {
 function SocialLinks({ data }: SocialLinksProps) {
   if (!data) return null;
 
-  const { tiktok, twitter, instagram, youtube, linkedin } = data;
+  const { tiktok, twitter, instagram, youtube, linkedin, google } = data;
 
   const socialLinks = [
+    {
+      url: google,
+      Icon: GoogleIcon,
+      label: "Review us on Google",
+    },
     {
       url: instagram,
       Icon: InstagramIcon,
@@ -56,6 +62,7 @@ function SocialLinks({ data }: SocialLinksProps) {
       label: "Subscribe to our YouTube channel",
     },
   ].filter((link) => link.url);
+  console.log('==>', socialLinks);
 
   return (
     <ul className="flex items-center space-x-6 text-muted-foreground">

@@ -3639,6 +3639,13 @@
                 "type": "string"
               },
               "optional": true
+            },
+            "google": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
             }
           }
         },
