@@ -34,7 +34,7 @@ export default defineConfig({
         locations,
       },
       previewUrl: {
-        origin: presentationOriginUrl ?? "http://localhost:3000",
+        origin: presentationOriginUrl ?? "https://mark-mendez-web.vercel.app/",
         previewMode: {
           enable: "/api/presentation-draft",
         },
