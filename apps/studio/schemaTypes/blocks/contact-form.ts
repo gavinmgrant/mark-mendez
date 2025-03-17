@@ -13,6 +13,12 @@ export const contactForm = defineType({
       description: "The large text above the contact form",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "content",
+      type: "richText",
+      title: "Content",
+      description: "The text below the title",
+    }),
   ],
   preview: {
     select: {
@@ -20,7 +26,7 @@ export const contactForm = defineType({
     },
     prepare: ({ title }) => ({
       title: title ?? "Untitled",
-      subtitle: "Contact Form",
+      content: "Contact Form",
     }),
   },
 });
