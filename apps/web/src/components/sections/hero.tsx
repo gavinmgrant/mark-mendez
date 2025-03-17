@@ -49,7 +49,7 @@ export function HeroBlock({
                 height={800}
                 priority
                 quality={80}
-                className="max-h-124 lg:max-h-96 w-full rounded-3xl object-cover"
+                className="max-h-124 lg:max-h-124 w-full rounded-2xl object-cover"
               />
             </div>
           )}

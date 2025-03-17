@@ -1,6 +1,8 @@
 import { Contact2Icon } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
+import { customRichText } from "../definitions/rich-text";
+
 export const contactForm = defineType({
   name: "contactForm",
   type: "object",
@@ -13,11 +15,9 @@ export const contactForm = defineType({
       description: "The large text above the contact form",
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
+    customRichText(["block"], {
       name: "content",
-      type: "richText",
       title: "Content",
-      description: "The text below the title",
     }),
   ],
   preview: {

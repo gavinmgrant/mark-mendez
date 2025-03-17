@@ -107,12 +107,12 @@ const dominantColorSeoImageRender = ({
       </div>
 
       <div tw="w-[630px] h-[630px] flex items-center justify-center p-8 relative z-10">
-        <div tw="w-[566px] h-[566px] bg-white bg-opacity-20 flex flex-col justify-center items-center rounded-3xl shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_2px_4px_-1px_rgba(0,0,0,0.03),0_4px_6px_-1px_rgba(0,0,0,0.05),0_8px_10px_-1px_rgba(0,0,0,0.05)] overflow-hidden">
+        <div tw="w-[566px] h-[566px] bg-white bg-opacity-20 flex flex-col justify-center items-center rounded-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_2px_4px_-1px_rgba(0,0,0,0.03),0_4px_6px_-1px_rgba(0,0,0,0.05),0_8px_10px_-1px_rgba(0,0,0,0.05)] overflow-hidden">
           <div tw="flex relative w-full h-full">
             {image ? (
               <img
                 src={image}
-                tw="w-full h-full rounded-3xl shadow-2xl"
+                tw="w-full h-full rounded-2xl shadow-2xl"
                 width={566}
                 height={566}
                 alt="Content preview"

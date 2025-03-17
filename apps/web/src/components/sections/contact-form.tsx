@@ -118,7 +118,7 @@ export function ContactForm({ title, content }: ContactFormProps) {
     <div className="relative w-full flex items-center justify-center container mx-auto px-4 md:px-6">
       <section
         id="contact-form"
-        className="relative container w-full spx-4 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-zinc-50 dark:bg-zinc-900 rounded-3xl overflow-hidden"
+        className="relative container w-full spx-4 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-zinc-50 dark:bg-zinc-900 rounded-2xl overflow-hidden"
       >
         <div className="container px-4 flex items-center justify-center w-full">
           <div className="flex flex-col items-center justify-center gap-5 w-full text-center">

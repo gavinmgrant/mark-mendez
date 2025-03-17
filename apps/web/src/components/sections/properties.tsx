@@ -29,7 +29,7 @@ export function Properties({ title }: PropertiesProps) {
             </div>
           )}
           <iframe
-            className="rounded-3xl"
+            className="rounded-2xl"
             src="https://www.compass.com/c/mark-mendez/architecture-for-sale?agent_id=5791082452f6eb36de5090f3"
             width="100%"
             height="1600px"

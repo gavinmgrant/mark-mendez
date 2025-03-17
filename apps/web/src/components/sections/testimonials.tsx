@@ -37,7 +37,7 @@ export function Testimonials({ title, testimonials }: TestimonialsProps) {
   function Testimonial({ title, richText }: { title: string; richText: any }) {
     return (
       <div key={title} className="p-4">
-        <div className="rounded-3xl p-8 bg-gray-50 dark:bg-zinc-900">
+        <div className="rounded-2xl p-8 bg-gray-50 dark:bg-zinc-900">
           <Quote
             fill={theme === "dark" ? "white" : "black"}
             stroke={theme === "dark" ? "white" : "black"}
@@ -68,7 +68,7 @@ export function Testimonials({ title, testimonials }: TestimonialsProps) {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className="flex flex-col items-center justify-center md:my-12 lg:my-16">
       <h2 className="text-3xl font-semibold md:text-4xl lg:text-5xl mb-4">
         {title}
       </h2>
