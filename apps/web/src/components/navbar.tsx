@@ -17,7 +17,7 @@ export function Navbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
   const { logo, siteTitle } = navbarData ?? {};
 
   return (
-    <section className="py-3 md:border-b sticky top-0 z-[9999] bg-background">
+    <section className="py-3 md:border-b sticky top-0 z-[1010] bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <nav className="grid grid-cols-[auto_1fr] items-center gap-4">
           {logo ? (

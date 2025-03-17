@@ -126,7 +126,7 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
           </Button>
         </SheetTrigger>
       </div>
-      <SheetContent className="overflow-y-auto">
+      <SheetContent className="overflow-y-auto z-[9999]">
         <SheetHeader>
           <SheetTitle>
             {logo ? (
@@ -134,7 +134,7 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
             ) : (
               <Link
                 href="/"
-                className="text-md lg:text-lg font-semibold tracking-widest"
+                className="text-sm font-semibold tracking-widest"
               >
                 {capitalizeAllLetters(siteTitle)}
               </Link>
