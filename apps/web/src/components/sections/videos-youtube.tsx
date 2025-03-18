@@ -43,12 +43,15 @@ export function VideosYoutube({ title }: VideosYoutubeProps) {
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 p-0 min-h-screen">
           {loading && (
             <div className="absolute top-0 flex items-center justify-center h-72 w-full">
-              <LoaderCircle
-                className="animate-spin text-primary"
-                size={24}
-                strokeWidth={2}
-                aria-hidden="true"
-              />
+              <div className="flex items-center gap-4">
+                <LoaderCircle
+                  className="animate-spin text-primary"
+                  size={24}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                <p>Loading videos...</p>
+              </div>
             </div>
           )}
           {videos.map((video) => (

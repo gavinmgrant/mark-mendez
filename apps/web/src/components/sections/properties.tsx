@@ -20,12 +20,15 @@ export function Properties({ title }: PropertiesProps) {
         <div className="relative">
           {loading && (
             <div className="absolute top-0 flex items-center justify-center h-72 w-full">
-              <LoaderCircle
-                className="animate-spin text-primary"
-                size={24}
-                strokeWidth={2}
-                aria-hidden="true"
-              />
+              <div className="flex items-center gap-4">
+                <LoaderCircle
+                  className="animate-spin text-primary"
+                  size={24}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                <p>Loading properties...</p>
+              </div>
             </div>
           )}
           <iframe

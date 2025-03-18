@@ -19,7 +19,7 @@ export function HeroBlock({
     <section id="hero" className="mt-4 md:my-10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center flex-col lg:flex-row gap-6 lg:gap-20">
-          <div className="grid h-full grid-rows-[auto_1fr_auto] gap-4 lg:gap-6 items-center justify-items-center text-center lg:items-start lg:justify-items-start lg:text-left">
+          <div className="h-full flex flex-col gap-4 lg:gap-6 items-center justify-items-center text-center lg:items-start lg:justify-items-start lg:text-left">
             {badge && <Badge variant="secondary">{badge}</Badge>}
             <div className="grid gap-4">
               <h1 className="text-4xl lg:text-5xl font-semibold text-balance">
@@ -35,7 +35,7 @@ export function HeroBlock({
               <SanityButtons
                 buttons={buttons}
                 buttonClassName="w-full sm:w-auto"
-                className="w-full sm:w-fit grid gap-2 sm:grid-flow-col lg:justify-start"
+                className="w-full sm:w-fit grid gap-4 sm:grid-flow-col lg:justify-start"
               />
             )}
           </div>
