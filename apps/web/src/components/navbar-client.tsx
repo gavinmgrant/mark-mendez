@@ -132,10 +132,7 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
             {logo ? (
               <Logo src={logo} alt={siteTitle} priority />
             ) : (
-              <Link
-                href="/"
-                className="text-sm font-semibold tracking-widest"
-              >
+              <Link href="/" className="text-sm font-semibold tracking-widest">
                 {capitalizeAllLetters(siteTitle)}
               </Link>
             )}
@@ -258,6 +255,8 @@ export function DesktopNavbar({
   return (
     <div>
       <div className="justify-self-end flex items-center gap-4">
+        <ModeToggle />
+
         <NavigationMenu className="flex items-center gap-0">
           {columns?.map((column) =>
             column.type === "column" ? (
@@ -267,7 +266,7 @@ export function DesktopNavbar({
             ),
           )}
         </NavigationMenu>
-        <ModeToggle />
+
         <SanityButtons
           buttons={buttons ?? []}
           className="flex items-center gap-4"
@@ -311,11 +310,13 @@ function SkeletonDesktopNavbar() {
     <div className="hidden md:grid w-full">
       <div className="justify-self-end">
         <div className="flex items-center gap-4">
-          <div className="justify-center flex max-w-max flex-1 items-center gap-2">
+          <div className="h-12 w-12 rounded-md bg-muted animate-pulse" />
+
+          <div className="justify-center flex max-w-max flex-1 items-center gap-0">
             <div className="h-8 w-[100px] rounded-md bg-muted animate-pulse" />
             <div className="h-8 w-[76px] rounded-md bg-muted animate-pulse" />
           </div>
-          <div className="h-12 w-12 rounded-md bg-muted animate-pulse" />
+
           <div className="h-12 w-[90px] rounded-md bg-muted animate-pulse" />
           <div className="h-12 w-[100px] rounded-md bg-muted animate-pulse" />
         </div>

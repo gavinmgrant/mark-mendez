@@ -62,7 +62,6 @@ function SocialLinks({ data }: SocialLinksProps) {
       label: "Subscribe to our YouTube channel",
     },
   ].filter((link) => link.url);
-  console.log('==>', socialLinks);
 
   return (
     <ul className="flex items-center space-x-6 text-muted-foreground">

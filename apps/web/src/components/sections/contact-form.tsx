@@ -118,15 +118,18 @@ export function ContactForm({ title, content }: ContactFormProps) {
     <div className="relative w-full flex items-center justify-center container mx-auto px-4 md:px-6">
       <section
         id="contact-form"
-        className="relative container w-full spx-4 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-zinc-50 dark:bg-zinc-900 rounded-2xl overflow-hidden"
+        className="relative container w-full px-6 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-zinc-50 dark:bg-zinc-900 rounded-2xl overflow-hidden"
       >
         <div className="container px-4 flex items-center justify-center w-full">
-          <div className="flex flex-col items-center justify-center gap-5 w-full text-center">
-            <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-neutral-300 sm:text-3xl md:text-5xl text-balance">
+          <div className="flex flex-col items-center justify-center gap-5 w-full">
+            <h2 className="mb-6 text-xl font-semibold text-gray-900 dark:text-neutral-300 sm:text-3xl md:text-5xl text-balance">
               {title}
             </h2>
-            <BookAMeetingButton />
-            <RichText richText={content} />
+            <div className="flex gap-8 flex-col items-center sm:flex-row sm:items-start justify-between w-full max-w-xl">
+              <RichText richText={content} />
+
+              <BookAMeetingButton />
+            </div>
           </div>
         </div>
       </section>
