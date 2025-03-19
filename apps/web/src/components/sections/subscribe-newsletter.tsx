@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@workspace/ui/components/button";
 import { ChevronRight, LoaderCircle } from "lucide-react";
 import Form from "next/form";
@@ -47,11 +48,19 @@ export function SubscribeNewsletter({
   subTitle,
   helperText,
 }: SubscribeNewsletterProps) {
+  const [message, setMessage] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+
+  async function handleSubmit(formData: FormData) {
+    setMessage(null);
+    setIsSuccess(null);
+    const result = await newsletterSubmission(formData);
+    setMessage(result.message || "An unexpected error occurred.");
+    setIsSuccess(result.success);
+  }
+
   return (
-    <section
-      id="subscribe"
-      className="px-4 container mx-auto md:px-6"
-    >
+    <section id="subscribe" className="px-4 container mx-auto md:px-6">
       <div className="relative container mx-auto px-4 md:px-8 py-8 sm:py-16 md:py-20 lg:py-24 bg-gray-50 dark:bg-zinc-900 rounded-2xl overflow-hidden">
         <div className="relative z-10 mx-auto text-center">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-neutral-300 sm:text-3xl md:text-5xl text-balance">
@@ -65,7 +74,7 @@ export function SubscribeNewsletter({
           )}
           <Form
             className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-2"
-            action={newsletterSubmission}
+            action={handleSubmit}
           >
             <div className="flex bg-white dark:bg-zinc-200 items-center border rounded-xl p-2 md:w-96 justify-between pl-4">
               <input
@@ -78,6 +87,7 @@ export function SubscribeNewsletter({
               <SubscribeNewsletterButton />
             </div>
           </Form>
+          {message && <p className="mt-3 text-sm sm:mt-4">{message}</p>}
           {helperText && (
             <RichText
               richText={helperText}
