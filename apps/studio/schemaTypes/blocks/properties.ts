@@ -13,6 +13,13 @@ export const properties = defineType({
       description: "The large text above the properties",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "url",
+      type: "url",
+      title: "URL",
+      description: "The URL of the properties page to show in the iframe",
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     select: {

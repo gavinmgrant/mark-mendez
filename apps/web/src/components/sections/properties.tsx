@@ -4,7 +4,7 @@ import { LoaderCircle } from "lucide-react";
 
 type PropertiesProps = PagebuilderType<"properties">;
 
-export function Properties({ title }: PropertiesProps) {
+export function Properties({ title, url }: PropertiesProps) {
   const [loading, setLoading] = useState(true);
 
   const handleLoaded = () => {
@@ -33,7 +33,7 @@ export function Properties({ title }: PropertiesProps) {
           )}
           <iframe
             className="rounded-2xl"
-            src="https://www.compass.com/c/mark-mendez/architecture-for-sale?agent_id=5791082452f6eb36de5090f3"
+            src={url}
             width="100%"
             height="1600px"
             style={{ border: "none", opacity: loading ? 0 : 1 }}

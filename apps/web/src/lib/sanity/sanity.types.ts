@@ -129,6 +129,7 @@ export type SubscribeNewsletter = {
 export type Properties = {
   _type: "properties";
   title?: string;
+  url?: string;
 };
 
 export type ImageLinkCards = {
@@ -1385,6 +1386,7 @@ export type QueryHomePageDataResult = {
         _key: string;
         _type: "properties";
         title?: string;
+        url?: string;
       }
     | {
         _key: string;
@@ -1904,6 +1906,7 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "properties";
         title?: string;
+        url?: string;
       }
     | {
         _key: string;
@@ -2424,6 +2427,7 @@ export type QueryBlogIndexPageDataResult = {
         _key: string;
         _type: "properties";
         title?: string;
+        url?: string;
       }
     | {
         _key: string;

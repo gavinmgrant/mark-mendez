@@ -34,7 +34,6 @@ import type { QueryNavbarDataResult } from "@/lib/sanity/sanity.types";
 import { capitalizeAllLetters } from "@/utils";
 
 import { Logo } from "./logo";
-import { ModeToggle } from "./mode-toggle";
 import { SanityButtons } from "./sanity-buttons";
 import { SanityIcon } from "./sanity-icon";
 interface MenuItem {
@@ -255,8 +254,6 @@ export function DesktopNavbar({
   return (
     <div>
       <div className="justify-self-end flex items-center gap-4">
-        <ModeToggle />
-
         <NavigationMenu className="flex items-center gap-0">
           {columns?.map((column) =>
             column.type === "column" ? (
@@ -310,14 +307,6 @@ function SkeletonDesktopNavbar() {
     <div className="hidden md:grid w-full">
       <div className="justify-self-end">
         <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-md bg-muted animate-pulse" />
-
-          <div className="justify-center flex max-w-max flex-1 items-center gap-0">
-            <div className="h-8 w-[100px] rounded-md bg-muted animate-pulse" />
-            <div className="h-8 w-[76px] rounded-md bg-muted animate-pulse" />
-          </div>
-
-          <div className="h-12 w-[90px] rounded-md bg-muted animate-pulse" />
           <div className="h-12 w-[100px] rounded-md bg-muted animate-pulse" />
         </div>
       </div>
