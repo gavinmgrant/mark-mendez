@@ -14,6 +14,7 @@ import { FeatureCardsWithIcon } from "./sections/feature-cards-with-icon";
 import { HeroBlock } from "./sections/hero";
 import { ImageLinkCards } from "./sections/image-link-cards";
 import { Properties } from "./sections/properties";
+import { RichTextBlock } from "./sections/rich-text-block";
 import { SubscribeNewsletter } from "./sections/subscribe-newsletter";
 import { Testimonials } from "./sections/testimonials";
 import { VideosYoutube } from "./sections/videos-youtube";
@@ -43,6 +44,7 @@ const BLOCK_COMPONENTS = {
   subscribeNewsletter: SubscribeNewsletter,
   imageLinkCards: ImageLinkCards,
   properties: Properties,
+  richTextBlock: RichTextBlock,
   testimonials: Testimonials,
   videosYoutube: VideosYoutube,
 } as const;

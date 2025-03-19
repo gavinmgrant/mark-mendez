@@ -5,6 +5,7 @@ import { featureCardsIcon } from "./feature-cards-icon";
 import { hero } from "./hero";
 import { imageLinkCards } from "./image-link-cards";
 import { properties } from "./properties";
+import { richTextBlock } from "./rich-text-block";
 import { subscribeNewsletter } from "./subscribe-newsletter";
 import { testimonials } from "./testimonials";
 import { videosYoutube } from "./videos-youtube";
@@ -17,6 +18,7 @@ export const pageBuilderBlocks = [
   faqAccordion,
   imageLinkCards,
   properties,
+  richTextBlock,
   subscribeNewsletter,
   testimonials,
   videosYoutube,

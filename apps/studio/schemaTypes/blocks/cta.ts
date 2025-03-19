@@ -3,7 +3,7 @@ import { defineField, defineType } from "sanity";
 
 import { buttonsField, richTextField } from "../common";
 
-const ctaCard = defineField({
+export const ctaCard = defineField({
   name: "ctaCard",
   type: "object",
   fields: [

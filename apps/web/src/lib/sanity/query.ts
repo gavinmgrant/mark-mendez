@@ -79,6 +79,7 @@ const ctaBlock = /* groq */ `
     ${buttonsFragment},
   }
 `;
+
 const imageLinkCardsBlock = /* groq */ `
   _type == "imageLinkCards" => {
     ...,
@@ -102,6 +103,13 @@ const heroBlock = /* groq */ `
     ...,
     ${imageFragment},
     ${buttonsFragment},
+    ${richTextFragment}
+  }
+`;
+
+const richTextBlock = /* groq */ `
+  _type == "rich-text-block" => {
+    ...,
     ${richTextFragment}
   }
 `;
@@ -166,7 +174,8 @@ const pageBuilderFragment = /* groq */ `
     ${faqAccordionBlock},
     ${subscribeNewsletterBlock},
     ${imageLinkCardsBlock},
-    ${testimonialsBlock}
+    ${testimonialsBlock},
+    ${richTextBlock}
   }
 `;
 
