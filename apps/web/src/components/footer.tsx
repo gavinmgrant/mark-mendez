@@ -212,7 +212,7 @@ function Footer({ data }: FooterProps) {
               <p>
                 © {year} {siteTitle}. All rights reserved.
               </p>
-              <ul className="flex justify-center gap-4 lg:justify-start">
+              <ul className="flex justify-center gap-1.5 lg:justify-start">
                 <li className="hover:text-primary">
                   <a
                     href="https://www.compass.com/agents/mark-mendez/"
@@ -222,6 +222,7 @@ function Footer({ data }: FooterProps) {
                     Compass
                   </a>
                 </li>
+                <p>|</p>
                 <li>{agentLicenseNumber}</li>
                 {/* <li className="hover:text-primary">
                   <Link href="/terms">Terms and Conditions</Link>

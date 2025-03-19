@@ -279,7 +279,7 @@ const ClientSideNavbar = ({
 }: {
   navbarData: QueryNavbarDataResult;
 }) => {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(1024);
 
   if (isMobile === undefined) {
     return null; // Return null on initial render to avoid hydration mismatch
@@ -294,7 +294,7 @@ const ClientSideNavbar = ({
 
 function SkeletonMobileNavbar() {
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <div className="flex justify-end">
         <div className="h-12 w-12 rounded-md bg-muted animate-pulse" />
       </div>
@@ -304,7 +304,7 @@ function SkeletonMobileNavbar() {
 
 function SkeletonDesktopNavbar() {
   return (
-    <div className="hidden md:grid w-full">
+    <div className="hidden lg:grid w-full">
       <div className="justify-self-end">
         <div className="flex items-center gap-4">
           <div className="h-12 w-[100px] rounded-md bg-muted animate-pulse" />

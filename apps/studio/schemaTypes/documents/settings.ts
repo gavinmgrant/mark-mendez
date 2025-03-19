@@ -81,7 +81,7 @@ export const settings = defineType({
       name: "agentLicenseNumber",
       type: "string",
       title: "Agent License Number",
-      description: "License number of the agent, example DRE# 01234567",
+      description: "License number of the agent, example DRE 01234567",
       validation: (rule) => rule.required(),
     }),
     defineField({

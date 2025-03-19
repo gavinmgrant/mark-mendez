@@ -4,7 +4,7 @@ import { LoaderCircle } from "lucide-react";
 
 type PropertiesProps = PagebuilderType<"properties">;
 
-export function Properties({ title, url }: PropertiesProps) {
+export function Properties({ title, url, iframeHeight }: PropertiesProps) {
   const [loading, setLoading] = useState(true);
 
   const handleLoaded = () => {
@@ -35,7 +35,7 @@ export function Properties({ title, url }: PropertiesProps) {
             className="rounded-2xl"
             src={url}
             width="100%"
-            height="1600px"
+            height={`${iframeHeight}px`}
             style={{ border: "none", opacity: loading ? 0 : 1 }}
             onLoad={handleLoaded}
           ></iframe>

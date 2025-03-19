@@ -20,6 +20,13 @@ export const properties = defineType({
       description: "The URL of the properties page to show in the iframe",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "iframeHeight",
+      type: "number",
+      title: "Iframe Height",
+      description: "The height of the iframe in pixels",
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     select: {

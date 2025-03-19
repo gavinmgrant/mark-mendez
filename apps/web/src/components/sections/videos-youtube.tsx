@@ -40,7 +40,7 @@ export function VideosYoutube({ title }: VideosYoutubeProps) {
     <section id="videos-youtube">
       <div className="container mx-auto px-4 md:px-6 space-y-6 text-center">
         <h1 className="text-4xl lg:text-5xl font-semibold">{title}</h1>
-        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 p-0 min-h-screen">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-4 p-0 min-h-screen">
           {loading && (
             <div className="absolute top-0 flex items-center justify-center h-72 w-full">
               <div className="flex items-center gap-4">
@@ -56,10 +56,10 @@ export function VideosYoutube({ title }: VideosYoutubeProps) {
           )}
           {videos.map((video) => (
             <div key={video.id} className="bg-background rounded-lg p-0">
-              <div className="aspect-w-16 aspect-h-9">
+              <div className="aspect-video">
                 <iframe
                   width="100%"
-                  height="315"
+                  height="100%"
                   src={`https://www.youtube.com/embed/${video.id}?modestbranding=1&rel=0&controls=1`}
                   title={video.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
