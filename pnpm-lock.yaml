@@ -150,6 +150,9 @@ importers:
       lucide-react:
         specifier: 0.477.0
         version: 0.477.0(react@19.0.0)
+      motion:
+        specifier: ^12.5.0
+        version: 12.5.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next:
         specifier: 15.2.1-canary.5
         version: 15.2.1-canary.5(@babel/core@7.26.0)(babel-plugin-react-compiler@19.0.0-beta-e1e972c-20250221)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -4448,6 +4451,20 @@ packages:
       react-dom:
         optional: true
 
+  framer-motion@12.5.0:
+    resolution: {integrity: sha512-buPlioFbH9/W7rDzYh1C09AuZHAk2D1xTA1BlounJ2Rb9aRg84OXexP0GLd+R83v0khURdMX7b5MKnGTaSg5iA==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   framework7-icons@5.0.5:
     resolution: {integrity: sha512-bvHMLyujV9TFuudehd3ORZ/EvNp19Ir3ckVzYAOf3MkLymHba/9oHLsgopCh0x5UsrYZUpkrE+fd7ggj5y4wRw==}
     engines: {node: '>= 0.10.0'}
@@ -5496,8 +5513,28 @@ packages:
   motion-dom@12.4.5:
     resolution: {integrity: sha512-Q2xmhuyYug1CGTo0jdsL05EQ4RhIYXlggFS/yPhQQRNzbrhjKQ1tbjThx5Plv68aX31LsUQRq4uIkuDxdO5vRQ==}
 
+  motion-dom@12.5.0:
+    resolution: {integrity: sha512-uH2PETDh7m+Hjd1UQQ56yHqwn83SAwNjimNPE/kC+Kds0t4Yh7+29rfo5wezVFpPOv57U4IuWved5d1x0kNhbQ==}
+
   motion-utils@12.0.0:
     resolution: {integrity: sha512-MNFiBKbbqnmvOjkPyOKgHUp3Q6oiokLkI1bEwm5QA28cxMZrv0CbbBGDNmhF6DIXsi1pCQBSs0dX8xjeER1tmA==}
+
+  motion-utils@12.5.0:
+    resolution: {integrity: sha512-+hFFzvimn0sBMP9iPxBa9OtRX35ZQ3py0UHnb8U29VD+d8lQ8zH3dTygJWqK7av2v6yhg7scj9iZuvTS0f4+SA==}
+
+  motion@12.5.0:
+    resolution: {integrity: sha512-BTAYKszMmTvXSsIyeHNMPSicjWgUA4j7OmZv1xPpthm4sPub3ch66fy9U7BhJ1uXNL3YeprsIegzuvps3FkEMw==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
@@ -12886,6 +12923,16 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  framer-motion@12.5.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      motion-dom: 12.5.0
+      motion-utils: 12.5.0
+      tslib: 2.8.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 1.2.2
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
   framework7-icons@5.0.5: {}
 
   fresh@0.5.2: {}
@@ -14006,7 +14053,22 @@ snapshots:
     dependencies:
       motion-utils: 12.0.0
 
+  motion-dom@12.5.0:
+    dependencies:
+      motion-utils: 12.5.0
+
   motion-utils@12.0.0: {}
+
+  motion-utils@12.5.0: {}
+
+  motion@12.5.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      framer-motion: 12.5.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      tslib: 2.8.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 1.2.2
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   ms@2.0.0: {}
 

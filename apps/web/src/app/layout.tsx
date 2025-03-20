@@ -10,6 +10,7 @@ import { preconnect, prefetchDNS } from "react-dom";
 import { FooterServer, FooterSkeleton } from "@/components/footer";
 import { NavbarServer, NavbarSkeleton } from "@/components/navbar";
 import { PreviewBar } from "@/components/preview-bar";
+import { PageTransition } from "@/components/page-transition";
 import { SanityLive } from "@/lib/sanity/live";
 
 import { Providers } from "../components/providers";
@@ -67,7 +68,7 @@ export default async function RootLayout({
               <PreviewBar />
             </>
           ) : (
-            children
+            <PageTransition>{children}</PageTransition>
           )}
           <Suspense fallback={<FooterSkeleton />}>
             <FooterServer />
