@@ -36,7 +36,11 @@ export function Properties({ title, url, iframeHeight }: PropertiesProps) {
             src={url}
             width="100%"
             height={`${iframeHeight}px`}
-            style={{ border: "none", opacity: loading ? 0 : 1 }}
+            style={{
+              border: "none",
+              opacity: loading ? 0 : 1,
+              overflow: "auto",
+            }}
             onLoad={handleLoaded}
           ></iframe>
         </div>

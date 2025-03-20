@@ -25,23 +25,24 @@ export function Testimonials({ title, testimonials }: TestimonialsProps) {
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 640 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 640, min: 0 },
       items: 1,
     },
   };
 
   function Testimonial({ title, richText }: { title: string; richText: any }) {
     return (
-      <div key={title} className="p-4">
+      <div key={title} className="p-3">
         <div className="rounded-2xl p-8 bg-gray-50 dark:bg-zinc-900">
           <Quote
             fill={theme === "dark" ? "white" : "black"}
             stroke={theme === "dark" ? "white" : "black"}
-            strokeWidth={1}
+            strokeWidth={0}
+            size={36}
           />
           <div className="my-2 text-sm leading-6">
             <RichText richText={richText} />
@@ -85,7 +86,7 @@ export function Testimonials({ title, testimonials }: TestimonialsProps) {
           customTransition="transform 1000ms ease-in-out"
           transitionDuration={1000}
           containerClass="flex items-center"
-          removeArrowOnDeviceType={["mobile"]}
+          removeArrowOnDeviceType={[]}
         >
           {testimonials?.map((testimonial, index) => (
             <Testimonial
