@@ -42,7 +42,7 @@ export function Testimonials({ title, testimonials }: TestimonialsProps) {
             fill={theme === "dark" ? "white" : "black"}
             stroke={theme === "dark" ? "white" : "black"}
             strokeWidth={0}
-            size={36}
+            size={32}
           />
           <div className="my-2 text-sm leading-6">
             <RichText richText={richText} />
@@ -69,7 +69,7 @@ export function Testimonials({ title, testimonials }: TestimonialsProps) {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center md:my-12 lg:my-16">
+    <section className="flex flex-col items-center justify-center md:mt-4 lg:mt-8">
       <h2 className="text-3xl font-semibold md:text-4xl lg:text-5xl mb-4">
         {title}
       </h2>
