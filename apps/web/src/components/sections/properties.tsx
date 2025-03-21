@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { PagebuilderType } from "@/types";
-import { LoaderCircle } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 type PropertiesProps = PagebuilderType<"properties">;
 
@@ -8,9 +8,7 @@ export function Properties({ title, url, iframeHeight }: PropertiesProps) {
   const [loading, setLoading] = useState(true);
 
   const handleLoaded = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    setLoading(false);
   };
 
   return (
@@ -19,17 +17,16 @@ export function Properties({ title, url, iframeHeight }: PropertiesProps) {
         <h1 className="text-4xl lg:text-5xl font-semibold">{title}</h1>
         <div className="relative">
           {loading && (
-            <div className="absolute top-0 flex items-center justify-center h-72 w-full">
-              <div className="flex items-center gap-4">
-                <LoaderCircle
-                  className="animate-spin text-primary"
-                  size={24}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-                <p>Loading properties...</p>
-              </div>
-            </div>
+            <AnimatePresence>
+              <motion.div
+                className="absolute top-0 flex items-center justify-center w-full animate-pulse bg-muted rounded-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                style={{ height: `${iframeHeight}px` }}
+              ></motion.div>
+            </AnimatePresence>
           )}
           <iframe
             className="rounded-2xl"
