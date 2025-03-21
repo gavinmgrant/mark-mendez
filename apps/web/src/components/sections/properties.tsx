@@ -8,7 +8,9 @@ export function Properties({ title, url, iframeHeight }: PropertiesProps) {
   const [loading, setLoading] = useState(true);
 
   const handleLoaded = () => {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   };
 
   return (
