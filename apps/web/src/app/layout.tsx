@@ -38,6 +38,13 @@ export default async function RootLayout({
   prefetchDNS("https://cdn.sanity.io");
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4163940690666529"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body
         className={`${fontGeist.variable} ${fontMono.variable} font-geist antialiased`}
       >
