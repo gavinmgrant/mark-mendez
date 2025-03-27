@@ -50,7 +50,7 @@ export function VideosYoutube({ title }: VideosYoutubeProps) {
   return (
     <section id="videos-youtube">
       <div className="container mx-auto px-4 md:px-6 space-y-6 text-center">
-        <h1 className="text-4xl lg:text-5xl font-semibold">{title}</h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold">{title}</h1>
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-4 p-0 min-h-screen">
           {videos.map((video, index) => (
             <div key={video.id} className="bg-background rounded-md p-0">

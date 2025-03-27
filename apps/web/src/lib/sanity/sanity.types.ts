@@ -168,7 +168,6 @@ export type Properties = {
   _type: "properties";
   title?: string;
   url?: string;
-  iframeHeight?: number;
 };
 
 export type ImageLinkCards = {
@@ -1430,7 +1429,6 @@ export type QueryHomePageDataResult = {
         _type: "properties";
         title?: string;
         url?: string;
-        iframeHeight?: number;
       }
     | {
         _key: string;
@@ -1989,7 +1987,6 @@ export type QuerySlugPageDataResult = {
         _type: "properties";
         title?: string;
         url?: string;
-        iframeHeight?: number;
       }
     | {
         _key: string;
@@ -2549,7 +2546,6 @@ export type QueryBlogIndexPageDataResult = {
         _type: "properties";
         title?: string;
         url?: string;
-        iframeHeight?: number;
       }
     | {
         _key: string;

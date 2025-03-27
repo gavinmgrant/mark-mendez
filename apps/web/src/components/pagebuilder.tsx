@@ -69,7 +69,7 @@ export function PageBuilder({
 
   return (
     <main
-      className="flex flex-col gap-16 my-4 lg:my-16 max-w-7xl mx-auto"
+      className="flex flex-col gap-16 my-4 lg:my-10 max-w-7xl mx-auto"
       data-sanity={createDataAttribute({
         id: id,
         baseUrl: studioUrl,
