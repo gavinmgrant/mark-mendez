@@ -67,8 +67,15 @@ export default async function RootLayout({
                     : payload?.document?._id;
                   const slug = payload?.document?.slug?.current;
                   const type = payload?.document?._type;
-                  for (const tag of [slug, id, type]) {
-                    if (tag) revalidateTag(tag);
+                  // Revalidate tags - Next.js 15.6 canary requires cache type as second argument
+                  if (slug && typeof slug === "string") {
+                    revalidateTag(slug, "fetch");
+                  }
+                  if (id && typeof id === "string") {
+                    revalidateTag(id, "fetch");
+                  }
+                  if (type && typeof type === "string") {
+                    revalidateTag(type, "fetch");
                   }
                 }}
               />
