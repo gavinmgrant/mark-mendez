@@ -3,9 +3,14 @@ import { sanityFetch } from "@/lib/sanity/live";
 import { queryHomePageData } from "@/lib/sanity/query";
 import { getMetaData } from "@/lib/seo";
 
+// Revalidate home page every hour (ISR - Incremental Static Regeneration)
+export const revalidate = 3600;
+
 async function fetchHomePageData() {
   return await sanityFetch({
     query: queryHomePageData,
+    // Add revalidation tag for cache invalidation
+    tags: ["homePage"],
   });
 }
 

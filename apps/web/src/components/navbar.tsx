@@ -9,7 +9,11 @@ import { Logo } from "./logo";
 import { NavbarClient, NavbarSkeletonResponsive } from "./navbar-client";
 
 export async function NavbarServer() {
-  const navbarData = await sanityFetch({ query: queryNavbarData });
+  const navbarData = await sanityFetch({
+    query: queryNavbarData,
+    // Add revalidation tag for cache invalidation
+    tags: ["navbar"],
+  });
   return <Navbar navbarData={navbarData.data} />;
 }
 

@@ -6,10 +6,15 @@ import { sanityFetch } from "@/lib/sanity/live";
 import { querySlugPageData, querySlugPagePaths } from "@/lib/sanity/query";
 import { getMetaData } from "@/lib/seo";
 
+// Revalidate pages every hour (ISR - Incremental Static Regeneration)
+export const revalidate = 3600;
+
 async function fetchSlugPageData(slug: string) {
   return await sanityFetch({
     query: querySlugPageData,
     params: { slug: `/${slug}` },
+    // Add revalidation tags for cache invalidation
+    tags: [`page-${slug}`, "pages"],
   });
 }
 

@@ -27,6 +27,8 @@ interface FooterProps {
 async function fetchFooterData() {
   const response = await sanityFetch({
     query: queryFooterData,
+    // Add revalidation tag for cache invalidation
+    tags: ["footer"],
   });
   return response;
 }
