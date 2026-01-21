@@ -156,6 +156,7 @@ async function getTtfFont(
       headers: {
         "User-Agent": "Mozilla/5.0 Firefox/1.0",
       },
+      next: { revalidate: 604800 }, // Cache for 1 week
     },
   );
 
@@ -166,7 +167,10 @@ async function getTtfFont(
     throw new Error("Failed to extract font URL from CSS");
   }
 
-  return await fetch(ttfUrl).then((res) => res.arrayBuffer());
+  // Cache font files for 1 week
+  return await fetch(ttfUrl, {
+    next: { revalidate: 604800 }, // Cache for 1 week
+  }).then((res) => res.arrayBuffer());
 }
 
 const getOptions = async ({

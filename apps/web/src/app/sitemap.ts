@@ -6,6 +6,9 @@ import { querySitemapData } from "@/lib/sanity/query";
 
 const baseUrl = getBaseUrl();
 
+// Revalidate sitemap daily (sitemaps don't need to update frequently)
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { slugPages, blogPages } = await client.fetch(querySitemapData);
   return [
