@@ -190,21 +190,20 @@ function NavbarColumnLink({
 }) {
   if (column.type !== "link") return null;
   return (
-    <Link
-      aria-label={`Link to ${column.name ?? column.href}`}
-      href={column.href ?? ""}
-      legacyBehavior
-      passHref
+    <NavigationMenuLink
+      asChild
+      className={cn(
+        navigationMenuTriggerStyle(),
+        "text-muted-foreground dark:text-neutral-300",
+      )}
     >
-      <NavigationMenuLink
-        className={cn(
-          navigationMenuTriggerStyle(),
-          "text-muted-foreground dark:text-neutral-300",
-        )}
+      <Link
+        aria-label={`Link to ${column.name ?? column.href}`}
+        href={column.href ?? ""}
       >
         {column.name}
-      </NavigationMenuLink>
-    </Link>
+      </Link>
+    </NavigationMenuLink>
   );
 }
 
