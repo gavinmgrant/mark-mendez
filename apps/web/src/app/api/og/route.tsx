@@ -14,7 +14,8 @@ import {
   getSlugPageOGData,
 } from "./og-data";
 
-export const runtime = "edge";
+// Revalidate cached images every hour
+export const revalidate = 3600;
 
 const errorContent = (
   <div tw="flex flex-col w-full h-full items-center justify-center">
@@ -243,7 +244,7 @@ const block = {
   blog: getBlogPageContent,
 } as const;
 
-export async function GET({ url }: Request): Promise<ImageResponse> {
+export async function GET({ url }: Request): Promise<Response> {
   const { searchParams } = new URL(url);
   const type = searchParams.get("type") as keyof typeof block;
   const { width, height } = getOgMetaData(searchParams);
@@ -252,9 +253,25 @@ export async function GET({ url }: Request): Promise<ImageResponse> {
   const image = block[type] ?? getGenericPageContent;
   try {
     const content = await image(para);
-    return new ImageResponse(content ? content : errorContent, options);
+    const response = new ImageResponse(
+      content ? content : errorContent,
+      options,
+    );
+    // Add aggressive caching headers to reduce edge requests
+    // Cache for 1 year, but allow stale-while-revalidate for better performance
+    response.headers.set(
+      "Cache-Control",
+      "public, s-maxage=31536000, stale-while-revalidate=86400",
+    );
+    return response;
   } catch (err) {
     console.log({ err });
-    return new ImageResponse(errorContent, options);
+    const response = new ImageResponse(errorContent, options);
+    // Even error responses should be cached briefly to prevent repeated failures
+    response.headers.set(
+      "Cache-Control",
+      "public, s-maxage=300, stale-while-revalidate=60",
+    );
+    return response;
   }
 }
