@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { preconnect, prefetchDNS } from "react-dom";
 
 import { FooterServer, FooterSkeleton } from "@/components/footer";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { NavbarServer, NavbarSkeleton } from "@/components/navbar";
 import { PreviewBar } from "@/components/preview-bar";
 import { PageTransition } from "@/components/page-transition";
@@ -48,6 +49,7 @@ export default async function RootLayout({
       <body
         className={`${fontGeist.variable} ${fontMono.variable} font-geist antialiased`}
       >
+        <GoogleAnalytics />
         <Providers>
           <Suspense fallback={<NavbarSkeleton />}>
             <NavbarServer />
