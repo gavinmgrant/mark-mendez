@@ -39,10 +39,7 @@ function TableOfContentLink({ heading }: { heading: ProcessedHeading }) {
   return (
     <Link
       href={heading.href}
-      className={cn(
-        buttonVariants({ variant: "link" }),
-        "text-sm justify-start truncate",
-      )}
+      className="text-sm justify-start !px-0"
     >
       {heading.text}
     </Link>
@@ -55,7 +52,7 @@ export function TableOfContent<T>({ richText }: TableOfContentProps<T>) {
 
   return (
     <div className="sticky left-0 top-8 flex flex-col">
-      <details className="group mb-4 rounded-xl bg-zinc-100 dark:bg-zinc-800 p-8">
+      <details className="group rounded-md bg-zinc-100 dark:bg-zinc-800 p-4">
         <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold">
           <span>Table of Contents</span>
           <ChevronDown
@@ -63,8 +60,8 @@ export function TableOfContent<T>({ richText }: TableOfContentProps<T>) {
             aria-hidden="true"
           />
         </summary>
-        <nav className="mt-4 " aria-label="Table of contents">
-          <ul className="flex flex-col space-y-2">
+        <nav className="mt-4" aria-label="Table of contents">
+          <ul className="flex flex-col space-y-3">
             {headings.map((heading) => (
               <TableOfContentLink
                 key={`${heading.href}-${heading.text}-heading`}

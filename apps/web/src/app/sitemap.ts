@@ -10,7 +10,8 @@ const baseUrl = getBaseUrl();
 export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { slugPages, blogPages } = await client.fetch(querySitemapData);
+  const { slugPages, blogPages, caseStudyIndex, caseStudyPages } =
+    await client.fetch(querySitemapData);
   return [
     {
       url: baseUrl,
@@ -18,13 +19,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...slugPages.map((page) => ({
+    ...slugPages.map((page: any) => ({
       url: `${baseUrl}${page.slug}`,
       lastModified: new Date(page.lastModified ?? new Date()),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
-    ...blogPages.map((page) => ({
+    ...blogPages.map((page: any) => ({
+      url: `${baseUrl}${page.slug}`,
+      lastModified: new Date(page.lastModified ?? new Date()),
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    })),
+    ...(caseStudyIndex?.slug
+      ? [
+          {
+            url: `${baseUrl}${caseStudyIndex.slug}`,
+            lastModified: new Date(
+              caseStudyIndex.lastModified ?? new Date(),
+            ),
+            changeFrequency: "weekly" as const,
+            priority: 0.6,
+          },
+        ]
+      : []),
+    ...caseStudyPages.map((page: any) => ({
       url: `${baseUrl}${page.slug}`,
       lastModified: new Date(page.lastModified ?? new Date()),
       changeFrequency: "weekly" as const,

@@ -49,11 +49,34 @@ const blogCardFragment = /* groq */ `
   _id,
   title,
   description,
-  "slug":slug.current,
+  "slug": slug.current,
   richText,
   ${imageFragment},
   publishedAt,
   ${blogAuthorFragment}
+`;
+
+const caseStudyImageFragment = /* groq */ `
+  heroImage{
+    ...,
+    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),
+    "blurData": asset->metadata.lqip,
+    "dominantColor": asset->metadata.palette.dominant.background,
+  }
+`;
+
+const caseStudyCardFragment = /* groq */ `
+  _type,
+  _id,
+  title,
+  description,
+  "slug": slug.current,
+  listingUrl,
+  location,
+  architect,
+  yearBuilt,
+  tourDate,
+  ${caseStudyImageFragment}
 `;
 
 const buttonsFragment = /* groq */ `
@@ -237,6 +260,47 @@ export const queryBlogPaths = defineQuery(`
   *[_type == "blog" && defined(slug.current)].slug.current
 `);
 
+export const queryCaseStudyIndexPageData = defineQuery(/* groq */ `
+  *[_type == "caseStudyIndex"][0]{
+    ...,
+    _id,
+    _type,
+    title,
+    description,
+    ${pageBuilderFragment},
+    "slug": slug.current,
+    "featuredCaseStudies": featured[]->{
+      ${caseStudyCardFragment}
+    }
+  }{
+    ...@,
+    "allCaseStudies": *[_type == "caseStudy" && (seoHideFromLists != true)]{
+      ${caseStudyCardFragment}
+    }
+  }
+`);
+
+export const queryCaseStudySlugPageData = defineQuery(/* groq */ `
+  *[_type == "caseStudy" && slug.current == $slug][0]{
+    ...,
+    "slug": slug.current,
+    ${caseStudyImageFragment},
+    "gallery": gallery[]{
+      ...,
+      "alt": coalesce(alt, asset->altText, asset->originalFilename, "Image"),
+      "blurData": asset->metadata.lqip,
+    },
+    body[]{
+      ...,
+      ${markDefsFragment}
+    }
+  }
+`);
+
+export const queryCaseStudyPaths = defineQuery(`
+  *[_type == "caseStudy" && defined(slug.current)].slug.current
+`);
+
 const ogFieldsFragment = /* groq */ `
   _id,
   _type,
@@ -272,6 +336,32 @@ export const querySlugPageOGData = defineQuery(/* groq */ `
 export const queryBlogPageOGData = defineQuery(/* groq */ `
   *[_type == "blog" && _id == $id][0]{
     ${ogFieldsFragment}
+  }
+`);
+
+const caseStudyOgFieldsFragment = /* groq */ `
+  _id,
+  _type,
+  "title": select(
+    defined(ogTitle) => ogTitle,
+    defined(seoTitle) => seoTitle,
+    title
+  ),
+  "description": select(
+    defined(ogDescription) => ogDescription,
+    defined(seoDescription) => seoDescription,
+    description
+  ),
+  "image": heroImage.asset->url + "?w=566&h=566&dpr=2&fit=max",
+  "dominantColor": heroImage.asset->metadata.palette.dominant.background,
+  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max",
+  "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",
+  "date": coalesce(tourDate, _createdAt)
+`;
+
+export const queryCaseStudyPageOGData = defineQuery(/* groq */ `
+  *[_type == "caseStudy" && _id == $id][0]{
+    ${caseStudyOgFieldsFragment}
   }
 `);
 
@@ -351,6 +441,14 @@ export const querySitemapData = defineQuery(/* groq */ `{
     "lastModified": _updatedAt
   },
   "blogPages": *[_type == "blog" && defined(slug.current)]{
+    "slug": slug.current,
+    "lastModified": _updatedAt
+  },
+  "caseStudyIndex": *[_type == "caseStudyIndex"][0]{
+    "slug": slug.current,
+    "lastModified": _updatedAt
+  },
+  "caseStudyPages": *[_type == "caseStudy" && defined(slug.current)]{
     "slug": slug.current,
     "lastModified": _updatedAt
   }

@@ -1,0 +1,40 @@
+interface CaseStudyMetaProps {
+  description?: string | null;
+  location?: string | null;
+  architect?: string | null;
+  yearBuilt?: string | null;
+  tourDate?: string | null;
+}
+
+export function CaseStudyMeta({
+  description,
+  location,
+  architect,
+  yearBuilt,
+  tourDate,
+}: CaseStudyMetaProps) {
+  const hasContent =
+    description || location || architect || yearBuilt || tourDate;
+  if (!hasContent) return null;
+
+  return (
+    <div className="space-y-4 text-lg text-muted-foreground">
+      {description && <p>{description}</p>}
+      <div className="flex flex-col gap-y-1 sm:gap-y-2 text-sm">
+        {location && <span>{location}</span>}
+        {architect && <span>Architect: {architect}</span>}
+        {yearBuilt && <span>Year built: {yearBuilt}</span>}
+        {tourDate && (
+          <time dateTime={tourDate}>
+            Tour date:{" "}
+            {new Date(tourDate).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </time>
+        )}
+      </div>
+    </div>
+  );
+}

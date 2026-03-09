@@ -9,6 +9,7 @@ import { getTitleCase } from "@/utils";
 import { getOgMetaData } from "./og-config";
 import {
   getBlogPageOGData,
+  getCaseStudyPageOGData,
   getGenericPageOGData,
   getHomePageOGData,
   getSlugPageOGData,
@@ -242,10 +243,19 @@ const getGenericPageContent = async ({ id }: ContentProps) => {
   return dominantColorSeoImageRender(result);
 };
 
+const getCaseStudyPageContent = async ({ id }: ContentProps) => {
+  if (!id) return undefined;
+  const [result, err] = await getCaseStudyPageOGData(id);
+  if (err || !result) return undefined;
+  if (result?.seoImage) return seoImageRender({ seoImage: result.seoImage });
+  return dominantColorSeoImageRender(result);
+};
+
 const block = {
   homePage: getHomePageContent,
   page: getSlugPageContent,
   blog: getBlogPageContent,
+  caseStudy: getCaseStudyPageContent,
 } as const;
 
 export async function GET({ url }: Request): Promise<Response> {
