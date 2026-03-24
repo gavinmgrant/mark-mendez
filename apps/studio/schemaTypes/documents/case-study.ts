@@ -86,6 +86,8 @@ export const caseStudy = defineType({
       name: "videoUrl",
       type: "url",
       title: "YouTube Video URL",
+      description:
+        "YouTube only (watch, Shorts, youtu.be, or embed links). Other URLs are not embedded on the site.",
       group: GROUP.MAIN_CONTENT,
     }),
     defineField({

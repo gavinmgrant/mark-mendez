@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { buttonVariants } from "@workspace/ui/components/button";
 import type { SanityImageProps } from "@/types";
+import { formatTourDate } from "@/utils";
 
 import { SanityImage } from "./sanity-image";
 
@@ -55,13 +55,7 @@ function CaseStudyMeta({
     <div className="my-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
       {location && <span>{location}</span>}
       {tourDate && (
-        <time dateTime={tourDate}>
-          {new Date(tourDate).toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
-        </time>
+        <time dateTime={tourDate}>{formatTourDate(tourDate)}</time>
       )}
     </div>
   );

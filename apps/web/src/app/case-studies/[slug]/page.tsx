@@ -4,9 +4,10 @@ import { ExternalLink } from "lucide-react";
 import { Button } from "@workspace/ui/components/button";
 import { RichText } from "@/components/richtext";
 // import { SanityImage } from "@/components/sanity-image";
-import { TableOfContent } from "@/components/table-of-content";
+import { CaseStudyAside } from "@/components/case-study-aside";
 import { CaseStudyGallery } from "@/components/case-study-gallery";
 import { CaseStudyMeta } from "@/components/case-study-meta";
+import { ShareButtons } from "@/components/share-buttons";
 import { client } from "@/lib/sanity/client";
 import { sanityFetch } from "@/lib/sanity/live";
 import {
@@ -14,6 +15,7 @@ import {
   queryCaseStudySlugPageData,
 } from "@/lib/sanity/query";
 import { getMetaData } from "@/lib/seo";
+import { getYoutubeEmbedSrc } from "@/lib/youtube-embed";
 
 export const revalidate = 3600;
 
@@ -64,7 +66,7 @@ export default async function CaseStudySlugPage({
   const {
     title,
     description,
-    heroImage,
+    // heroImage,
     body,
     location,
     architect,
@@ -75,12 +77,19 @@ export default async function CaseStudySlugPage({
     gallery,
   } = data ?? {};
 
+  const youtubeEmbedSrc =
+    typeof videoUrl === "string" ? getYoutubeEmbedSrc(videoUrl) : null;
+
+  const postTitle = title ?? "";
+  const postUrl = typeof window !== "undefined" ? window.location.href : "";
+
   return (
-    <div className="container mx-auto my-4 lg:my-10 px-4 md:px-6">
+    <div className="container mx-auto my-4 lg:my-6 px-4 md:px-6">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
-        <main className="space-y-8 lg:space-y-10">
+        <main className="space-y-8 lg:space-y-10 mt-4">
           <header>
-            <h1 className="text-4xl font-bold">{title}</h1>
+            <h1 className="text-2xl xl:text-3xl font-bold mb-2">{title}</h1>
+            <ShareButtons postTitle={postTitle} postUrl={postUrl} />
             <div className="mt-4 lg:hidden">
               <CaseStudyMeta
                 description={description}
@@ -104,14 +113,10 @@ export default async function CaseStudySlugPage({
             />
           )} */}
 
-          {videoUrl && (
+          {youtubeEmbedSrc && (
             <div className="aspect-video w-full overflow-hidden rounded-lg bg-muted">
               <iframe
-                src={
-                  videoUrl.includes("youtube.com")
-                    ? `https://www.youtube.com/embed/${new URL(videoUrl).searchParams.get("v") ?? ""}`
-                    : videoUrl
-                }
+                src={youtubeEmbedSrc}
                 title={`Video: ${title}`}
                 className="h-full w-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -148,18 +153,15 @@ export default async function CaseStudySlugPage({
         </main>
 
         <aside className="hidden lg:block">
-          <div className="sticky top-28 space-y-6 rounded-lg">
-            <CaseStudyMeta
-              description={description}
-              location={location}
-              architect={architect}
-              yearBuilt={yearBuilt}
-              tourDate={tourDate}
-            />
-            {body && body.length > 0 && (
-              <TableOfContent richText={body} />
-            )}
-          </div>
+          <CaseStudyAside
+            title={title}
+            description={description}
+            location={location}
+            architect={architect}
+            yearBuilt={yearBuilt}
+            tourDate={tourDate}
+            body={body}
+          />
         </aside>
       </div>
     </div>

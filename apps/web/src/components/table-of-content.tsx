@@ -1,5 +1,3 @@
-import { buttonVariants } from "@workspace/ui/components/button";
-import { cn } from "@workspace/ui/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import type { PortableTextBlock } from "next-sanity";

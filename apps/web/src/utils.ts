@@ -27,6 +27,17 @@ export const getTitleCase = (name: string) => {
   return titleTemp.charAt(0).toUpperCase() + titleTemp.slice(1);
 };
 
+const tourDateLocaleOptions: Intl.DateTimeFormatOptions = {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+};
+
+/** Formats a case study tour date (ISO string from Sanity) for display. */
+export function formatTourDate(isoDate: string): string {
+  return new Date(isoDate).toLocaleDateString("en-US", tourDateLocaleOptions);
+}
+
 type Response<T> = [T, undefined] | [undefined, string];
 
 export async function handleErrors<T>(
