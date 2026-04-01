@@ -86,11 +86,10 @@ export default async function CaseStudySlugPage({
   return (
     <div className="container mx-auto my-4 lg:my-6 px-4 md:px-6">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
-        <main className="space-y-8 lg:space-y-10 mt-4">
+        <main className="space-y-6 lg:space-y-8 mt-4">
           <header>
             <h1 className="text-2xl xl:text-3xl font-bold mb-2">{title}</h1>
-            <ShareButtons postTitle={postTitle} postUrl={postUrl} />
-            <div className="mt-4 lg:hidden">
+            <div className="lg:hidden">
               <CaseStudyMeta
                 description={description}
                 location={location}
@@ -113,17 +112,22 @@ export default async function CaseStudySlugPage({
             />
           )} */}
 
-          {youtubeEmbedSrc && (
-            <div className="aspect-video w-full overflow-hidden rounded-lg bg-muted">
-              <iframe
-                src={youtubeEmbedSrc}
-                title={`Video: ${title}`}
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+          <div className="flex flex-col gap-4">
+            {youtubeEmbedSrc && (
+              <div className="aspect-video w-full overflow-hidden rounded-lg bg-muted">
+                <iframe
+                  src={youtubeEmbedSrc}
+                  title={`Video: ${title}`}
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            )}
+            <div className="lg:hidden">
+              <ShareButtons postTitle={postTitle} postUrl={postUrl} />
             </div>
-          )}
+          </div>
 
           {body && body.length > 0 && (
             <div className="prose prose-neutral dark:prose-invert max-w-none">

@@ -55,6 +55,9 @@ export function CaseStudyAside({
           yearBuilt={yearBuilt}
           tourDate={tourDate}
         />
+        <div className="hidden lg:block">
+          <ShareButtons postTitle={title ?? ""} postUrl={typeof window !== "undefined" ? window.location.href : ""} />
+        </div>
         {body && body.length > 0 && <TableOfContent richText={body} />}
       </div>
     </div>
