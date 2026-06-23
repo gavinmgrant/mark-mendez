@@ -14,6 +14,7 @@ const LIGHTBOX_WIDTH = 1920;
 
 type GalleryImageWithAsset = SanityImageProps & {
   asset: NonNullable<SanityImageProps["asset"]>;
+  caption?: string | null;
 };
 
 function isGalleryImageWithAsset(
@@ -67,28 +68,34 @@ export function CaseStudyGallery({
     <>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {displayGallery.map((img, index) => (
-          <div
-            key={"_ref" in img.asset ? img.asset._ref : index}
-            className="cursor-pointer overflow-hidden rounded-md transition opacity-90 hover:opacity-100"
-            onClick={() => lightbox.openAt(index)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                lightbox.openAt(index);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-            aria-label={`View image ${index + 1} of ${count}`}
-          >
-            <SanityImage
-              asset={img}
-              alt={img.alt ?? `Gallery image ${index + 1}`}
-              width={600}
-              height={400}
-              className="aspect-[3/2] w-full object-cover"
-            />
-          </div>
+          <figure key={"_ref" in img.asset ? img.asset._ref : index}>
+            <div
+              className="cursor-pointer overflow-hidden rounded-md transition opacity-90 hover:opacity-100"
+              onClick={() => lightbox.openAt(index)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  lightbox.openAt(index);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`View image ${index + 1} of ${count}`}
+            >
+              <SanityImage
+                asset={img}
+                alt={img.alt ?? `Gallery image ${index + 1}`}
+                width={600}
+                height={400}
+                className="aspect-[3/2] w-full object-cover"
+              />
+            </div>
+            {img.caption ? (
+              <figcaption className="mt-2 text-sm text-muted-foreground">
+                {img.caption}
+              </figcaption>
+            ) : null}
+          </figure>
         ))}
       </div>
 

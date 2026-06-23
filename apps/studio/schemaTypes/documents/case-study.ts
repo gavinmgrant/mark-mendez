@@ -106,6 +106,15 @@ export const caseStudy = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        defineField({
+          name: "caption",
+          type: "string",
+          title: "Caption",
+          description:
+            "Optional caption displayed below the image in the gallery",
+        }),
+      ],
     }),
     defineField({
       ...richTextField,
@@ -130,6 +139,13 @@ export const caseStudy = defineType({
               type: "string",
               title: "Alt text",
               description: "Important for accessibility",
+            },
+            {
+              name: "caption",
+              type: "string",
+              title: "Caption",
+              description:
+                "Optional caption displayed below the image in the gallery",
             },
           ],
         }),
