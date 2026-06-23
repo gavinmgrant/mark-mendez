@@ -43,13 +43,17 @@ function buildLightboxImages(
 
 interface CaseStudyGalleryProps {
   gallery: SanityImageProps[];
+  heroImage?: SanityImageProps | null;
 }
 
-export function CaseStudyGallery({ gallery }: CaseStudyGalleryProps) {
-  const displayGallery = React.useMemo(
-    () => filterGalleryWithAssets(gallery),
-    [gallery],
-  );
+export function CaseStudyGallery({
+  gallery,
+  heroImage,
+}: CaseStudyGalleryProps) {
+  const displayGallery = React.useMemo(() => {
+    const images = heroImage ? [heroImage, ...gallery] : gallery;
+    return filterGalleryWithAssets(images);
+  }, [gallery, heroImage]);
   const lightboxImages = React.useMemo(
     () => buildLightboxImages(displayGallery),
     [displayGallery],

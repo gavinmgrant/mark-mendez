@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@workspace/ui/components/button";
 import { RichText } from "@/components/richtext";
-// import { SanityImage } from "@/components/sanity-image";
 import { CaseStudyAside } from "@/components/case-study-aside";
 import { CaseStudyGallery } from "@/components/case-study-gallery";
 import { CaseStudyMeta } from "@/components/case-study-meta";
@@ -66,7 +65,7 @@ export default async function CaseStudySlugPage({
   const {
     title,
     description,
-    // heroImage,
+    heroImage,
     body,
     location,
     architect,
@@ -99,18 +98,6 @@ export default async function CaseStudySlugPage({
               />
             </div>
           </header>
-
-          {/* {heroImage && (
-            <SanityImage
-              asset={heroImage}
-              alt={title ?? "Case study hero"}
-              width={1600}
-              loading="eager"
-              height={900}
-              quality={100}
-              className="h-auto w-full rounded-lg"
-            />
-          )} */}
 
           <div className="flex flex-col gap-4">
             {youtubeEmbedSrc && (
@@ -148,10 +135,10 @@ export default async function CaseStudySlugPage({
             </Button>
           )}
 
-          {gallery && gallery.length > 0 && (
+          {(heroImage?.asset || (gallery && gallery.length > 0)) && (
             <div>
               <h2 className="mb-6 text-2xl font-semibold">Gallery</h2>
-              <CaseStudyGallery gallery={gallery} />
+              <CaseStudyGallery gallery={gallery ?? []} heroImage={heroImage} />
             </div>
           )}
         </main>
