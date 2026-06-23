@@ -1,6 +1,8 @@
 import { author } from "./author";
 import { blog } from "./blog";
 import { blogIndex } from "./blog-index";
+import { caseStudy } from "./case-study";
+import { caseStudyIndex } from "./case-study-index";
 import { faq } from "./faq";
 import { footer } from "./footer";
 import { homePage } from "./home-page";
@@ -9,6 +11,21 @@ import { page } from "./page";
 import { settings } from "./settings";
 import { testimonial } from "./testimonial";
 
-export const singletons = [homePage, blogIndex, settings, footer, navbar];
+export const singletons = [
+  homePage,
+  blogIndex,
+  caseStudyIndex,
+  settings,
+  footer,
+  navbar,
+];
 
-export const documents = [blog, page, faq, author, testimonial, ...singletons];
+export const documents = [
+  blog,
+  caseStudy,
+  page,
+  faq,
+  author,
+  testimonial,
+  ...singletons,
+];

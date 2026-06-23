@@ -1,6 +1,7 @@
 import { client } from "@/lib/sanity/client";
 import {
   queryBlogPageOGData,
+  queryCaseStudyPageOGData,
   queryGenericPageOGData,
   queryHomePageOGData,
   querySlugPageOGData,
@@ -17,6 +18,10 @@ export async function getSlugPageOGData(id: string) {
 
 export async function getBlogPageOGData(id: string) {
   return await handleErrors(client.fetch(queryBlogPageOGData, { id }));
+}
+
+export async function getCaseStudyPageOGData(id: string) {
+  return await handleErrors(client.fetch(queryCaseStudyPageOGData, { id }));
 }
 
 export async function getGenericPageOGData(id: string) {

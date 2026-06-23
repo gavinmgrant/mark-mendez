@@ -18,6 +18,7 @@
     "@sanity/image-url": "^1.1.0",
     "@sanity/preview-url-secret": "^2.1.4",
     "@sanity/visual-editing": "^2.13.6",
+    "@tabler/icons-react": "^3.40.0",
     "@workspace/ui": "workspace:*",
     "babel-plugin-react-compiler": "19.0.0-beta-e1e972c-20250221",
     "express": "^4.21.2",

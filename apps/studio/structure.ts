@@ -1,5 +1,6 @@
 import {
   BookMarked,
+  Building2,
   CogIcon,
   File,
   FileText,
@@ -103,6 +104,11 @@ export const structure = (
         S,
         index: { type: "blogIndex", icon: BookMarked },
         list: { type: "blog", title: "Blogs", icon: FileText },
+      }),
+      createIndexList({
+        S,
+        index: { type: "caseStudyIndex", icon: Building2 },
+        list: { type: "caseStudy", title: "Case Studies", icon: Building2 },
       }),
       createList({
         S,
