@@ -5,6 +5,7 @@ import * as React from "react";
 export interface LightboxImage {
   src: string;
   alt: string;
+  caption?: string;
 }
 
 interface UseLightboxOptions {
