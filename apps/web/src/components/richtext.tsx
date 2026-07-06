@@ -101,9 +101,7 @@ const components: Partial<PortableTextReactComponents> = {
           <SanityImage
             asset={value}
             className="w-full h-auto rounded-lg"
-            width={1600}
-            height={900}
-            // priority
+            highFidelity
           />
         </div>
       );

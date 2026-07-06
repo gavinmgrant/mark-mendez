@@ -23,3 +23,7 @@ const imageBuilder = createImageUrlBuilder({
 
 export const urlFor = (source: SanityImageSource) =>
   imageBuilder.image(source).auto("format").fit("max").format("webp");
+
+/** Original format, no lossy conversion — for inline images that need max sharpness. */
+export const urlForHighFidelity = (source: SanityImageSource) =>
+  imageBuilder.image(source).fit("max");
