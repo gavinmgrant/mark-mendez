@@ -14,6 +14,9 @@ interface CaseStudyAsideProps {
   architect?: string | null;
   yearBuilt?: string | null;
   tourDate?: string | null;
+  program?: string | null;
+  structure?: string | null;
+  primaryIdea?: string | null;
   body: unknown[] | null | undefined;
 }
 
@@ -24,6 +27,9 @@ export function CaseStudyAside({
   architect,
   yearBuilt,
   tourDate,
+  program,
+  structure,
+  primaryIdea,
   body,
 }: CaseStudyAsideProps) {
   const scrollHeight = useScrollHeight();
@@ -54,6 +60,9 @@ export function CaseStudyAside({
           architect={architect}
           yearBuilt={yearBuilt}
           tourDate={tourDate}
+          program={program}
+          structure={structure}
+          primaryIdea={primaryIdea}
         />
         <div className="hidden lg:block">
           <ShareButtons postTitle={title ?? ""} postUrl={typeof window !== "undefined" ? window.location.href : ""} />

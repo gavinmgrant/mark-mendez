@@ -71,6 +71,9 @@ export default async function CaseStudySlugPage({
     architect,
     yearBuilt,
     tourDate,
+    program,
+    structure,
+    primaryIdea,
     videoUrl,
     listingUrl,
     gallery,
@@ -95,6 +98,9 @@ export default async function CaseStudySlugPage({
                 architect={architect}
                 yearBuilt={yearBuilt}
                 tourDate={tourDate}
+                program={program}
+                structure={structure}
+                primaryIdea={primaryIdea}
               />
             </div>
           </header>
@@ -151,6 +157,9 @@ export default async function CaseStudySlugPage({
             architect={architect}
             yearBuilt={yearBuilt}
             tourDate={tourDate}
+            program={program}
+            structure={structure}
+            primaryIdea={primaryIdea}
             body={body}
           />
         </aside>

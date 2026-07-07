@@ -83,6 +83,24 @@ export const caseStudy = defineType({
       group: GROUP.MAIN_CONTENT,
     }),
     defineField({
+      name: "program",
+      type: "string",
+      title: "Program",
+      group: GROUP.MAIN_CONTENT,
+    }),
+    defineField({
+      name: "structure",
+      type: "string",
+      title: "Structure",
+      group: GROUP.MAIN_CONTENT,
+    }),
+    defineField({
+      name: "primaryIdea",
+      type: "string",
+      title: "Primary Idea",
+      group: GROUP.MAIN_CONTENT,
+    }),
+    defineField({
       name: "videoUrl",
       type: "url",
       title: "YouTube Video URL",
