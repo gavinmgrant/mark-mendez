@@ -6,6 +6,7 @@ import { RichText } from "@/components/richtext";
 import { CaseStudyAside } from "@/components/case-study-aside";
 import { CaseStudyGallery } from "@/components/case-study-gallery";
 import { CaseStudyMeta } from "@/components/case-study-meta";
+import { CaseStudyTimeline } from "@/components/case-study-timeline";
 import { ShareButtons } from "@/components/share-buttons";
 import { client } from "@/lib/sanity/client";
 import { sanityFetch } from "@/lib/sanity/live";
@@ -76,6 +77,7 @@ export default async function CaseStudySlugPage({
     primaryIdea,
     videoUrl,
     listingUrl,
+    timeline,
     gallery,
   } = data ?? {};
 
@@ -88,7 +90,7 @@ export default async function CaseStudySlugPage({
   return (
     <div className="container mx-auto my-4 lg:my-6 px-4 md:px-6">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
-        <main className="space-y-6 lg:space-y-8 mt-4">
+        <main className="min-w-0 space-y-6 lg:space-y-8 mt-4">
           <header>
             <h1 className="text-2xl xl:text-3xl font-bold mb-2">{title}</h1>
             <div className="lg:hidden">
@@ -127,6 +129,8 @@ export default async function CaseStudySlugPage({
               <RichText richText={body} />
             </div>
           )}
+
+          <CaseStudyTimeline milestones={timeline} />
 
           {listingUrl && (
             <Button asChild variant="default" size="sm" className="w-full sm:w-auto">

@@ -60,7 +60,7 @@ export default async function CaseStudiesIndexPage() {
               <FeaturedCaseStudyCard caseStudy={featured} />
             </div>
           )}
-          <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
             {gridList.map((caseStudy: CaseStudy, index: number) => (
               <CaseStudyCard
                 key={`${caseStudy?._id}-${index}`}

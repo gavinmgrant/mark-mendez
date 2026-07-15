@@ -7,6 +7,31 @@ import { seoFields } from "../../utils/seo-fields";
 import { createSlug, isUnique } from "../../utils/slug";
 import { richTextField } from "../common";
 
+const timelineMilestone = defineField({
+  name: "timelineMilestone",
+  type: "object",
+  fields: [
+    defineField({
+      name: "year",
+      type: "string",
+      title: "Year",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "text",
+      type: "string",
+      title: "What happened",
+      validation: (Rule) => Rule.required(),
+    }),
+  ],
+  preview: {
+    select: {
+      title: "year",
+      subtitle: "text",
+    },
+  },
+});
+
 export const caseStudy = defineType({
   name: "caseStudy",
   title: "Case Study",
@@ -139,6 +164,22 @@ export const caseStudy = defineType({
       name: "body",
       title: "Case Study Text",
       group: GROUP.MAIN_CONTENT,
+    }),
+    defineField({
+      name: "timeline",
+      type: "array",
+      title: "Timeline",
+      description: "Add at least 3 milestones to show the timeline on the page.",
+      group: GROUP.MAIN_CONTENT,
+      of: [timelineMilestone],
+      validation: (Rule) =>
+        Rule.custom((items) => {
+          if (!items?.length) return true;
+          if (items.length < 3) {
+            return "Add at least 3 milestones, or leave the timeline empty.";
+          }
+          return true;
+        }),
     }),
     defineField({
       name: "gallery",
