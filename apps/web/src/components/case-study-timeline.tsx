@@ -285,7 +285,7 @@ function MilestoneMarker({
             align={popoverAlign}
             sideOffset={12}
             collisionPadding={16}
-            className="w-64 border-white/30 text-sm leading-relaxed shadow-[0_0_24px_rgba(255,255,255,0.18)]"
+            className="w-64 border-white/30 text-sm leading-relaxed"
           >
             <p className="font-semibold tabular-nums">{milestone.year}</p>
             <p className="mt-1 text-muted-foreground">{milestone.text}</p>
