@@ -35,13 +35,58 @@ const ENTRANCE_DURATION = 0.5;
 const YEAR_ROW_HEIGHT = 24;
 
 /**
- * Survive React remounts (e.g. Sanity Live / router.refresh on tab focus).
- * Without this, a brief empty `milestones` prop returns null and removes the
- * entire section — including the "Timeline" heading.
+ * Survive Soft refreshes / remounts where `milestones` briefly (or wrongly)
+ * arrives empty — that used to hit `return null` and remove the whole section.
+ * Keyed by case-study slug so navigations between pages don't leak data.
  */
-let lastGoodMilestones: TimelineMilestone[] | null = null;
-/** Once the entrance has played in this JS session, remounts show the finished UI. */
-let entrancePlayed = false;
+const milestonesBySlug = new Map<string, TimelineMilestone[]>();
+const entrancePlayedBySlug = new Set<string>();
+
+const STORAGE_PREFIX = "case-study-timeline:";
+
+function normalizeMilestones(
+  milestones?: TimelineMilestone[] | null,
+): TimelineMilestone[] | null {
+  if (!milestones?.length) return null;
+  const valid = milestones.filter(
+    (m): m is TimelineMilestone =>
+      Boolean(m && typeof m.year === "string" && m.year.trim() && typeof m.text === "string" && m.text.trim()),
+  );
+  return valid.length >= 3 ? valid : null;
+}
+
+function readStoredMilestones(cacheKey: string): TimelineMilestone[] | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = sessionStorage.getItem(STORAGE_PREFIX + cacheKey);
+    if (!raw) return null;
+    return normalizeMilestones(JSON.parse(raw) as TimelineMilestone[]);
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredMilestones(cacheKey: string, milestones: TimelineMilestone[]) {
+  if (typeof window === "undefined") return;
+  try {
+    sessionStorage.setItem(STORAGE_PREFIX + cacheKey, JSON.stringify(milestones));
+  } catch {
+    // Ignore quota / private mode failures.
+  }
+}
+
+function resolveStableMilestones(
+  cacheKey: string,
+  milestones?: TimelineMilestone[] | null,
+): TimelineMilestone[] | null {
+  const fromProps = normalizeMilestones(milestones);
+  if (fromProps) {
+    milestonesBySlug.set(cacheKey, fromProps);
+    writeStoredMilestones(cacheKey, fromProps);
+    return fromProps;
+  }
+  return milestonesBySlug.get(cacheKey) ?? readStoredMilestones(cacheKey);
+}
 
 function parseYear(year: string): number | null {
   const match = year.match(/\d{3,4}/);
@@ -189,16 +234,6 @@ function centerStyle(offset: number): CSSProperties {
   };
 }
 
-function resolveStableMilestones(
-  milestones?: TimelineMilestone[] | null,
-): TimelineMilestone[] | null {
-  if (milestones && milestones.length >= 3) {
-    lastGoodMilestones = milestones;
-    return milestones;
-  }
-  return lastGoodMilestones;
-}
-
 type MilestoneMarkerProps = {
   milestone: PositionedMilestone;
   index: number;
@@ -298,15 +333,21 @@ function MilestoneMarker({
 
 type CaseStudyTimelineProps = {
   milestones?: TimelineMilestone[] | null;
+  /** Stable id for this page (e.g. case-study slug) so Soft refresh can recover data. */
+  cacheKey: string;
 };
 
-export function CaseStudyTimeline({ milestones }: CaseStudyTimelineProps) {
+export function CaseStudyTimeline({
+  milestones,
+  cacheKey,
+}: CaseStudyTimelineProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
   const [runEntrance, setRunEntrance] = useState(false);
+  const entrancePlayed = entrancePlayedBySlug.has(cacheKey);
   const showFinished = entrancePlayed && !runEntrance;
 
-  const stableMilestones = resolveStableMilestones(milestones);
+  const stableMilestones = resolveStableMilestones(cacheKey, milestones);
 
   useEffect(() => {
     const node = trackRef.current;
@@ -318,14 +359,14 @@ export function CaseStudyTimeline({ milestones }: CaseStudyTimelineProps) {
     const resizeObserver = new ResizeObserver(update);
     resizeObserver.observe(node);
 
-    if (entrancePlayed) {
+    if (entrancePlayedBySlug.has(cacheKey)) {
       return () => resizeObserver.disconnect();
     }
 
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return;
-        entrancePlayed = true;
+        entrancePlayedBySlug.add(cacheKey);
         setRunEntrance(true);
         io.disconnect();
       },
@@ -337,7 +378,7 @@ export function CaseStudyTimeline({ milestones }: CaseStudyTimelineProps) {
       resizeObserver.disconnect();
       io.disconnect();
     };
-  }, []);
+  }, [cacheKey]);
 
   const positioned = useMemo(() => {
     if (!stableMilestones) return [];

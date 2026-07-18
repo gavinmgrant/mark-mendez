@@ -284,6 +284,11 @@ export const queryCaseStudySlugPageData = defineQuery(/* groq */ `
   *[_type == "caseStudy" && slug.current == $slug][0]{
     ...,
     "slug": slug.current,
+    timeline[]{
+      _key,
+      year,
+      text
+    },
     ${caseStudyImageFragment},
     "gallery": gallery[]{
       ...,

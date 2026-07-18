@@ -130,7 +130,7 @@ export default async function CaseStudySlugPage({
             </div>
           )}
 
-          <CaseStudyTimeline milestones={timeline} />
+          <CaseStudyTimeline milestones={timeline} cacheKey={slug} />
 
           {listingUrl && (
             <Button asChild variant="default" size="sm" className="w-full sm:w-auto">
