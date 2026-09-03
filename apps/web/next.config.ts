@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/newsletter",
+        destination: "https://mark-mendez.myflodesk.com/ax2tixh14p",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
